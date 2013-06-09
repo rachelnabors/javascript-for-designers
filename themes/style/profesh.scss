@@ -1,0 +1,226 @@
+@font-face {
+  font-family: 'OstrichSansBlack';
+  src: url("http://fonts.rachelnabors.com/ostrich-black-webfont.eot");
+  src: url("http://fonts.rachelnabors.com/ostrich-black-webfont.eot?#iefix") format("embedded-opentype"), url("http://fonts.rachelnabors.com/ostrich-black-webfont.woff") format("woff"), url("http://fonts.rachelnabors.com/ostrich-black-webfont.ttf") format("truetype"), url("http://fonts.rachelnabors.com/ostrich-black-webfont.svg#OstrichSansBlack") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OstrichSansMedium';
+  src: url("http://fonts.rachelnabors.com/ostrich-regular-webfont.eot");
+  src: url("http://fonts.rachelnabors.com/ostrich-regular-webfont.eot?#iefix") format("embedded-opentype"), url("http://fonts.rachelnabors.com/ostrich-regular-webfont.woff") format("woff"), url("http://fonts.rachelnabors.com/ostrich-regular-webfont.ttf") format("truetype"), url("http://fonts.rachelnabors.com/ostrich-regular-webfont.svg#OstrichSansMedium") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+$franklin: franklin-gothic-urw, sans-serif;
+    $bold: 700;
+    $normal: 400;
+$ostblk: 'OstrichSansBlack', sans-serif;
+$ostmed: 'OstrichSansMedium', sans-serif;
+
+$black: #3f4752;
+$highlight: #d6e549; //green
+$highlightContrast: #313b02; //dark green
+$link: #1CCEFF; //turquoise
+$linkVisited: #0097C0; // dark turq
+$callout: #e64988; // pink
+$magenta: #a52469;
+
+$canvas: #dfeff6;
+$canvas_black: #141f31;
+$grey: #858585;
+
+%ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
+
+.deck-container {
+	font-family: $franklin;
+	font-weight: $normal;
+	font-size:1.75em;
+	background:#ccc url(../../img/bg_pinstripe.png);
+
+	.self-portrait, .talk-title {
+		margin-top: 3em;
+	}
+	.self-portrait{
+		width: 33.33333%;
+		float: left;
+		img {
+			max-width: 100%;
+			margin: 0 auto;
+		}
+		figcaption {
+			@extend %ir;
+			background-image: url(../../img/logo.png);
+			margin: 0 auto;
+			width: 264px; height: 117px;
+		}
+	}
+
+	.talk-title {
+		float: right;
+		width: 64.44444%;
+		h1 {
+			font-size: 3em !important;
+			margin: 0;
+		}
+		h2 { 
+			border: 0;
+			padding: 0;
+		}
+	}
+
+	.slide {
+		color: #3C3C3C;
+		h1, h2, h3, h4, h5, h6 {
+			font-weight: normal;
+			text-align: left;
+		}
+		h1 {
+			font-family: $ostblk;
+			font-size: 4em;
+			font-weight: normal;
+			margin-top: 1em;
+			position:relative;
+			top:auto;
+			padding:0;
+			-webkit-transform:none;
+			-moz-transform:none;
+			-ms-transform:none;
+			-o-transform:none;
+			transform:none;
+			&.vcenter { margin: 0;}
+		}
+		.vcenter {
+			h1, h2 { 
+				margin: 0;
+				padding: 0;
+			}
+			h2 { 
+				border: 0;
+				border-top: 3px solid #888;
+				font-size: 3em;
+				padding-top: .25em;
+			}
+		}
+
+		h2 {
+			font-family: $ostmed;
+			border-bottom-color:$grey;
+			line-height: .8em;
+		}
+
+		h3 {
+			font-family: $ostblk;
+			color:#888;
+		}
+		h4 {
+			margin-top: 2em;
+		}
+		pre {
+			border-color:$grey;
+			em { color: $callout;}
+		}
+
+		code {
+			color:#888;
+		}
+
+		figure {
+			margin-bottom: 1em;
+			text-align: center;
+		}
+		figcaption { font-style: italic;}
+
+		blockquote {
+			font-size:2em;
+			font-style:italic;
+			padding:1em 2em;
+			color:#000;
+			border-left:5px solid $grey;
+
+			p {
+				margin:0;
+			}
+
+			cite {
+				font-size:.5em;
+				font-style:normal;
+				font-weight:bold;
+				color:#888;
+				display: block;
+				text-align: right;
+				&:before { content:"\2014";}	
+			}
+		}
+
+		::-moz-selection{ background:$magenta; color:#fff; }
+		::selection { background:$magenta; color:#fff; }
+
+		a {
+			border-bottom: 1px dotted $link;
+			padding: 1px 1px 0 1px;
+			text-decoration: none;
+		}
+		a:link {
+			color:  $link;
+		}
+
+		a:visited {
+			border-color: $linkVisited;
+			color: $linkVisited;
+		}
+
+		a:hover, a:active {
+			color: $highlightContrast;
+			background: $highlight;
+			border: 0;
+		}
+
+	}
+	
+	> .slide {
+		.deck-before, .deck-previous {
+			opacity:0.4;
+			
+			&:not(.deck-child-current) {
+				.deck-before, .deck-previous {
+					opacity:1;
+				}
+			}
+		}
+		
+		.deck-child-current {
+			opacity:1;
+		}
+	} 
+	
+	.deck-prev-link, .deck-next-link {
+		background:$grey;
+		font-family:serif; // sans-serif arrows x-browser fail
+		
+		&, &:hover, &:focus, &:active, &:visited {
+			color:#fff;
+		}
+		
+		&:hover, &:focus {
+			background:$callout;
+			text-decoration:none;
+		}
+	}
+	
+	.deck-status {
+		font-size:0.6666em;
+	}
+	
+	&.deck-menu {
+		.slide {
+			background:#eee;
+		}
+		
+		.deck-current, .no-touch & .slide:hover {
+			background:#ddf;
+		}
+	}
+}

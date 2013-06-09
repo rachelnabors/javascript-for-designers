@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=1024, user-scalable=no">
+
+  <title>JavaScript for Designers with Rachel Nabors</title>
+  
+  <!-- Required stylesheet -->
+  <link rel="stylesheet" href="core/deck.core.css">
+  
+  <!-- Extension CSS files go here. Remove or add as needed. -->
+  <link rel="stylesheet" href="extensions/goto/deck.goto.css">
+  <link rel="stylesheet" href="extensions/menu/deck.menu.css">
+  <link rel="stylesheet" href="extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" href="extensions/status/deck.status.css">
+  <link rel="stylesheet" href="extensions/hash/deck.hash.css">
+  <link rel="stylesheet" href="extensions/scale/deck.scale.css">
+  <link rel="stylesheet" href="extensions/pointer/deck.pointer.css">
+  <link rel="stylesheet" href="extensions/syntaxhighlighter/deck.syntaxhighlighter.css">
+
+  <!-- Style theme. More available in /themes/style/ or create your own. -->
+  <link rel="stylesheet" href="themes/style/profesh.css">
+  
+  <!-- Transition theme. More available in /themes/transition/ or create your own. -->
+  <link rel="stylesheet" href="themes/transition/horizontal-slide.css">
+  
+  <!-- Required Modernizr file -->
+  <script src="modernizr.custom.js"></script>
+  <script type="text/javascript" src="http://use.typekit.com/ewk1gzp.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+</head>
+<body class="deck-container">
+
+<section class="slide title-slide">
+  <div class="talk-title">
+    <hgroup>
+      <h1>JavaScript for Designers</h1>
+      <h2>An Introduction to JavaScript Terms and Concepts</h2>
+    </hgroup>
+    <p><a href="http://rachelnabors.com">RachelNabors.com</a> <a href="http://twitter.com/rachelnabors" target="_blank">@RachelNabors</a></p>
+  </div>
+  <figure class="self-portrait">
+    <img src="img/p_rachelnabors.png" alt="A manga-inspired self-portrait of Rachel, clutching a laptop and looking adorable.">
+    <figcaption class="ir">with Rachel the Great (aka Rachel Nabors)</figcaption>
+  </figure>
+</section>
+
+<section class="slide">
+  <h2>I am Rachel <del>the Great</del> Nabors</h2>
+  <p>A cartoonist turned web designer turned front end developer</p>
+  <figure>
+    <img src="img/fig_rachel-tuna.png" alt="Rachel the Great and her talking cat Tuna, waving.">
+    <figcaption>(You can still read the comic adventures of Rachel and Tuna at <a href="http://www.rachelthegreat.com" target="_blank">RacheltheGreat.com</a>)</figcaption>
+  </figure>
+</section>
+
+<section class="slide">
+  <h2>I am <strong>not</strong> a hardcore JavaScript developer.</h2>
+  <p>CSS is my True Love.</p>
+  <p class="slide">I struggled with JS for years. Thought I couldn't learn it.</p>
+  <!--TODO Comic: "I'm just not good at JavaScript! I'm just sticking to CSS!"-->
+  <p class="slide">It felt like all the resources were by programmers for programmers. There was nothing written for me and my CSS heart.</p>
+  <p class="slide">But some exciting CSS projects and good books helped me get a grip on JS.</p>
+</section>
+
+<section class="slide">
+  <h2>You are&hellip;</h2>
+  <ul>
+    <li class="slide">Familiar with jQuery and/or JavaScript--might use it, might want to use it.</li>
+    <li class="slide">Suffering from imposter syndrome</li>
+    <li class="slide">Confused or annoyed when JS devs talk over your head</li>
+  </ul>
+</section>
+
+<section class="slide">
+    <h2>Why learn JavaScript?</h2>
+    <p>Can't you just use a library or a plugin or ask someone else to do it?</p>
+    <ul>
+        <li class="slide"><strong>Empowerment</strong> to implement your own interactions.</li>
+        <li class="slide"><strong>Understanding</strong> opens up new design possibilities.</li>
+        <li class="slide"><strong>Vocabulary</strong> with which to join the conversation</li>
+        <li class="slide"><strong>Respect</strong> gained from all of the above.</li>
+    </ul>
+</section>
+
+<section class="slide">
+  <h2>We will cover&hellip;</h2>
+  <p>Vocabulary and concepts that will help you understand and talk with developers:</p>
+  <ul>
+    <li>Vanilla JS and ECMAScript</li>
+    <li>Objects</li>
+    <li>Functions</li>
+    <li>Constructors</li>
+    <li>Prototypal Inheritance</li>
+    <li>Callbacks</li>
+    <li>Hoisting</li>
+    <li>Closures</li>
+    <li>Recursion</li>
+    <li>APIs</li>
+  </ul>
+</section>
+
+<section class="slide">
+  <h1 class="vcenter">Hello, JavaScript</h1>
+</section>
+
+<section class="slide">
+  <h2>ECMAScript <strong>is</strong> JavaScript</h2>
+  <!--ILLO 1. Wow, this JavaScript stuff is more popular than Java! But the browsers are making a muck of it. 2. Quickly, form a standardization committee!-->
+  <p class="slide">In 1997, an international standard for JavaScript was formalized.</p>
+  <p class="slide">Browsers try to conform to this standard the same way they try to conform to standards provided by the W3C for HTML and CSS.</p>
+  <p class="slide">That standard is <a ref="https://en.wikipedia.org/wiki/ECMAScript">ECMAScript</a>.</p>
+  <p class="slide">It's provided by <a href="https://en.wikipedia.org/wiki/Ecma_International"><abbr title="European Computer Manufacturers Association">ECMA</abbr> International</a>, a private, non-profit, membership-based standards organization originally founded in 1961.</p>
+  <p class="slide">&ldquo;<abbr title="European Computer Manufacturers Association">ECMA</abbr>&rdquo; stands for &ldquo;European Computer Manufacturers Association&rdquo;</p>
+  <p class="slide">All decisions are consensus-driven.</p>
+</section>
+
+<section class="slide">
+  <h2>ECMAScript has versions, too.</h2>
+  <!--ILLO ECMAScript and XHTML 2 in a trash heap. HTML 5, XHTML 1 and ECMAScript 3, 5 are still on display.-->
+  <p class="slide">Like CSS and HTML, ECMAScript has versions.</p>
+  <p class="slide">Version 4 was dropped for the same reasons XHTML 2 died on the vine.</p>
+  <p class="slide">Most of us code for version 3, but 5 is well supported, and 6 is on the way.</p>
+</section>
+
+<section class="slide">
+  <h2>jQuery is <strong>written</strong> in JavaScript</h2>
+  <p>If you're just getting into this space, you might be confused.</p>
+  <p class="slide">jQuery is a <strong>JavaScript Library</strong></p>
+  <p class="slide">Libraries are collections of code that lets you do big things without having to write a lot of code yourself.</p>
+  <p class="slide">Think of them like ready-made themes for a WordPress site, or a set of InDesign templates: plug in and go.</p>
+  <div class="slide">
+    <p>Here are some other libraries! Play with libraries. They are fun and useful :)</p>
+    <p>TODO: logos for libraries: zepto, highcharts, skrollr, bacon impact, x-tag, processing, ember, $, Lo-Dash, Popcorn, require.js, angular, deep clone, underscore.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Vanilla JS <strong>is</strong> JavaScript</h2>
+  <p class="slide"><a href="http://vanilla-js.com/">Vanilla JS</a> is just JavaScript.</p>
+  <div class="slide">
+    <p>JavaScript is pretty powerful now. You don't necessarily need libraries like jQuery.</p>
+    <pre class="language-javascript">
+$('p'); // jQuery gets p
+
+document.querySelector('p'); // Regular ol' JS gets p
+    </pre>
+  </div>
+  <p class="slide">If all you can write is jQuery, it's like never taking the training wheels off your bicycle.</p>
+  <p class="slide">Check out <a href="http://substack.net/weaning_yourself_off_jquery">Weaning Yourself off jQuery</a></p>
+</section>
+
+<section class="slide">
+  <h2>JavaScript <strong>isn't</strong> Java</h2>
+  <p>Raise your hand if you knew that already.</p>
+</section>
+
+<section class="slide">
+  <h1 class="vcenter">Objects</h1>
+</section>
+
+<section class="slide">
+  <h2>Everything is an Object</h2>
+  <blockquote>
+    Understand objects and you will understand JavaScript.
+    <cite>Cody Lindley, <em><a href="http://www.amazon.com/gp/product/B00ARPT74S/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B00ARPT74S&amp;linkCode=as2&amp;tag=mangapunk-20">JavaScript Enlightenment</a><img src="http://www.assoc-amazon.com/e/ir?t=mangapunk-20&amp;l=as2&amp;o=1&amp;a=B00ARPT74S" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></em></cite>
+  </blockquote>
+</section>
+
+<section class="slide">
+  <h2>What does an Object look like?</h2>
+  <p>TODO ILLO of an object</p>
+  <p class="slide">Variables created inside objects are called <strong>properties</strong>.</code>
+  <div class="slide">
+    <p>And this is how that looks in JavaScript.</p>
+    <pre class="language-javascript">
+var unicorn = {
+  color: 'purple',
+  name: 'Twilight Sparkle',
+  wings: true
+}
+</pre>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Objects upon Objects</h2>
+  <p>There are <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects">many kinds of objects</a>.</p>
+  <p class="slide">Even <code>null</code> and <code>undefined</code> are objects!</p>
+  <p class="slide">Let's look at a few of them up close.</p>
+</section>
+
+<section class="slide">
+  <h2>Complex objects</h2>
+  <ul>
+    <li class="slide"><strong>Object()</strong> is a generic JavaScript object:
+<pre class="language-javascript">
+boots = new Object();
+</pre>
+    </li>
+    <li class="slide"><strong>Array()</strong> is great for lists:
+<pre class="language-javascript">
+toDo = new Array('Forge Sword', 'Slay Dragon', 'Ride off into Sunset');
+</pre>
+    </li>
+    <li class="slide"><strong>Function()</strong> (more on this one soon!)</li>
+  </ul>
+  <p class="slide">They're <em>complex</em> because they can contain lots of complicated data.</p>
+</section>
+
+<section class="slide">
+  <h2>Primitive Values</h2>
+  <p><strong>Primitive Values</strong> are the simplest forms of information an object can represent.</p>
+  <ul>
+    <li class="slide"><strong>String()</strong> is just text:
+<pre class="language-javascript">
+ballad = "I miss you, but I haven't met you yet.";
+</pre>
+    </li>
+    <li class="slide"><strong>Boolean()</strong> has two values, true or false:
+<pre class="language-javascript">
+sword = true;
+</pre>
+    </li>
+    <li class="slide"><strong>Number()</strong> for numberic values:
+<pre class="language-javascript">
+castles = 15;
+</pre>
+    </li>
+  </ul>
+  <p class="slide"><code>null</code> and <code>undefined</code> are primitives!</p>
+</section>
+
+<section class="slide">
+  <h2>Complex Objects vs. Primitive Values</h2>
+  <p>Did you notice something weird about how we made primitive values vs. complex objects?</p>
+<pre class="language-javascript">
+boots = new Object(); //complex object
+
+castles = 15; //primitive value
+</pre>
+  <p class="slide">We use <code><strong>new</strong> Object()</code> (or new Array(), etc.) when making a complex object.</p>
+  <p class="slide"><code>Object()</code> is a constructor function. More on those soon!</p>
+</section>
+
+<section class="slide">
+  <h2>Object() as a Constructor</h2>
+  <p><code>Object()</code> makes simple values harder to compare and identify by wrapping them in an object.</p>
+  <div class="slide">
+    <h3>A Number()/String()/etc. is an Object() first</h3>
+<pre class="language-javascript">
+castles = new Number(15);
+typeof castles; // it's an Object()!
+</pre>
+  </div>
+
+  <div class="slide">
+    <h3>Objects() don't compare by their values</h3>
+<pre class="language-javascript">
+castles = new Number(15);
+horses = new Number(15);
+
+castles === horses; // compares two Objects(), not their numeric values
+</pre>
+  </div>
+</section>
+
+
+<section class="slide">
+    <h2>Primitives are Values.</h2>
+    <p>Primitives are not objects. They're values.</p>
+<pre class="language-javascript">
+castles = 15;
+horses = 15;
+
+castles === horses; // compares two numeric values
+</pre>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Danger: Type Coercion!</h2>
+  <p>JavaScript makes assumptions about what types of thing you're comparing.</p>
+  <p class="slide">The <code>==</code> operator tries to guess what type you mean.</p>
+<pre class="language-javascript">
+friends = 1; // a number
+heart = true; // boolean value, also counts as "1"
+
+friends == heart; // JS tries to guess what you mean
+</pre>
+  <div class="slide">
+    <p>To avoid, we use <code>===</code> which never uses type coercion.</p>
+<pre class="language-javascript">
+friends = 1; 
+heart = true; 
+
+friends === heart; // takes their types into account
+</pre>
+  <p>TODO ILLO of the false heart vs true heart, 1 vs 0</p>
+  </div>
+  <p class="slide"><a href="http://www.impressivewebs.com/why-use-triple-equals-javascipt/">You can dive deep on this.</a></p>
+</section>
+
+<section class="slide">
+  <h1 class="vcenter">Making Objects</h1>
+</section>
+
+<section class="slide">
+  <h2>Constructor Functions</h2>
+  <p><strong>Constructor functions</strong> are functions that make new objects.</p>
+<pre class="language-javascript">
+var unicorn = new Object();
+unicorn.color = "purple";
+unicorn.wings = true;
+unicorn.name = "Twilight Sparkle";
+unicorn.getName = function() {return "Hi, I'm " + unicorn.name;};
+</pre>
+  <p class="slide">Think of the <code>Object()</code> constructor as a cookie cutter for objects.</p>
+</section>
+
+<section class="slide">
+  <h2>Object Literals</h2>
+  <p><strong>Object Literals</strong> are a more concise way to create objects on the fly.</p>
+  <pre class="language-javascript">
+var unicorn = {
+  name: "Twilight Sparkle",
+  color: "purple",
+  wings: true,
+  getName: function() {return "Hi, I'm " + unicorn.name;}
+};
+</pre>
+  <p class="slide">This is the preferred way to make objects 'cuz it's so tidy.</p>
+</section>
+
+<section class="slide">
+  <h2>Prototypal Inheritance</h2>
+  <p>Objects can have babies via constructor functions.</p>
+  <div class="slide">
+    <p>When they do, they pass on their methods and properties to the babeh objects.</p>
+<pre class="language-javascript">
+// making a Unicorn() constructor function!
+var Unicorn = function(name, color, wings) { 
+  this.name = name;
+  this.color = color;
+  this.wings = wings;
+  getName = function() {return "Hi, I'm " + unicorn.name;};
+};
+
+var twilightSparkle = new Unicorn('Twilight Sparkle', 'purple', 'true');
+
+typeof twilightSparkle //object
+
+twilightSparkle.constructor //unicorn
+</pre>
+  </div>
+  <p class="slide">This is called <strong>prototypal inheritance</strong></p>
+</section>
+
+<section class="slide">
+  <h2>Object-Oriented Programming</h2>
+  <p>Watch <a href="http://www.youtube.com/watch?feature=player_detailpage&amp;v=c5kfCH50wl0#t=96s">this video for a few moments</a> while I drink some water.</p>
+  <p><em>(It's still hard for me to describe <abbr title="Object-Oriented Programming">OOP</abbr> elegantly.)</em></p>
+</section>
+
+<section class="slide">
+  <h2>First-Class Objects</h2>
+  <p>An object is first-class if it can be:</p>
+  <ul>
+    <li class="slide"><strong>Constructed</strong> on the fly</li>
+    <li class="slide"><strong>Passed</strong> as a parameter</li>
+    <li class="slide"><strong>Returned</strong> from an operation</li>
+    <li class="slide"><strong>Assigned</strong> to a variable</li>
+  </ul>
+  <p class="slide">Let's talk about another first-class object.</p>
+</section>
+
+<section class="slide">
+  <h1 class="vcenter">Functions</h1>
+</section>
+
+<section class="slide">
+  <h2>Functions are objects!</h2>
+  <p>What's more, they are first-class objects!</p>
+  <p class="slide">Meaning we can <strong>make</strong> 'em, <strong>pass</strong> 'em, <strong>return</strong> 'em, and <strong>assign</strong> 'em as variables!</p>
+</section>
+
+<section class="slide">
+  <h2>There are 3 ways to make a function</h2>
+  <pre class="language-javascript">
+// function constructor
+var addConstructor = new Function('x', 'y', 'return x + y'); //last parameter is the function logic
+
+// function statement
+function addStatement(x, y) {
+  return x + y; 
+}
+
+// function expression
+var addExpression = function(x, y) {
+    return x + y;
+};
+  </pre>
+</section>
+
+<section class="slide">
+  <h2>Functions do stuff</h2>
+  <p>Functions can be used to construct objects (as we've seen), return a value, or just run code.</p>
+  <div class="slide">
+      <p>Think of them as the verbs of JavaScript.</p>
+      <p>TODO ILLO <em>Document contains paragraphs.</em></p>
+      <pre class="language-javascript">document.querySelectorAll("p");</pre>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Running a Function</h2>
+  <p>To run a function, it needs parentheses.</p>
+  <p>TODO ILLO: This is why these are here.</p>
+  <pre class="language-javascript">$("#thief").hide();</pre>
+</section>
+
+<section class="slide">
+  <h2>Returning a function</h2>
+  <p><code>return</code> lets us return a value or object from a function.</p>
+<pre class="language-javascript">
+function redHen() {
+    return {
+        laidEggs: "5 eggs",
+        poops: "5 times a day"
+    }
+    console.log("Plot against the humans."); // doesn't happen, after return
+}
+
+var Henrietta = redHen(); // create an object via a function
+</pre>  
+  <p class="slide">It also stops the execution of the rest of the function.</p>
+</section>
+
+<section class="slide">
+  <h2>Anonymous Functions</h2>
+  <p>Anonymous functions are like disposable functions, use as needed.</p>
+  <pre class="language-javascript">
+$("#attack").click(function() { //anonymous function 
+  console.log("You attack the dragon with your trusty sword.");
+});
+</pre>
+</section>
+
+<section class="slide">
+  <h2>Methods</h2>
+  <p>When a function belongs to an object, it is called a <code>method</code> (of that object).</p>
+  <p>ILLO of diagram, again.</p>
+  <pre class="language-javascript">
+var unicorn = {
+  name: "Twilight Sparkle",
+  color: "purple",
+  wings: true,
+  getName: function() {return "Hi, I'm " + unicorn.name;}
+};
+</pre>
+</section>
+
+<section class="slide">
+  <h2>Higher-order Functions</h2>
+  <p>Functions that do stuff to functions are called &ldquo;higher order&rdquo; functions.</p>
+  <p class="slide">You know what's a great example of a function that does stuff to other functions?</p>
+</section>
+
+<section class="slide">
+  <h2>Callbacks</h2>
+  <!--ILLO Hollaback, y'all!-->
+  <p>Callbacks are higher-order functions.</p>
+  <div class="slide">
+    <p>A callback is when you pass a function to another function to be executed when it's finished.</p>
+  <pre class="language-javascript">
+$("#goodbye").click(function() { //anonymous function passed as a parameter to click function
+  alert("Holla back, y'all!");
+});
+</pre>
+  <p class="slide"><a href="http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/">Dive deep into callbacks at javascriptissexy.com</a></p>
+</section>
+
+<section class="slide">
+  <h2>Functional Programming</h2>
+  <p>A style of programming characterized by:</p>
+  <ul>
+    <li class="slide"><strong>Abstraction</strong> of frequently used functions to simplify their use.</li>
+    <li class="slide"><strong>Nesting</strong> functions within functions, we'll talk about closures.</li>
+    <li class="slide"><strong>Passing</strong> functions as arguments to other functions, see callbacks.</li>
+  </ul>
+  <p class="slide">jQuery is a great example of functional programming.</p>
+</section>
+
+<section class="slide">
+  <h1 class="vcenter">Very Important Objects</h1>
+</section>
+
+<section class="slide">
+  <h2>The Global Object: God of objects</h2>
+  <p>When you create a function or a variable, it automatically belongs to an object.</p>
+  <p class="slide">By default, everything belongs to the <em>Global Object</em>.</p>
+  <p class="slide">(Note the capitilization for future reference.)</p>
+  <p class="slide">In the browser, the window is that Global Object.</p>
+  <!--ILLO the God of Objects, maybe a turtle "It's objects all the way down."-->
+  <p class="slide">It is also called the <strong>Head Object</strong></p>
+  <p class="slide">It is inferred: <code>window.alert("OMG!");</code> is the same as <code>alert("OMG!");</code></p>
+</section>
+
+<section class="slide">
+  <h2>The jQuery object, <abrr title="Also Known As">AKA</abrr> <code>$</code></h2>
+  <p>By default, jQuery uses "$" as a shortcut for "jQuery"</p>
+  <div class="slide">
+    <p>That means this: <code>$("#id").hide();</code></p>
+    <p>Is the same as: <code>jQuery("#id").hide();</code></p>
+  </div>
+  <p class="slide">The <code>jQuery</code> object <em>wraps</em> a selector, allowing you to perform jQuery <em>methods</em> on it.</p>
+</section>
+
+
+<section class="slide">
+  <h1 class="vcenter">Scope and Variables</h1>
+</section>
+
+<section class="slide">
+  <h2>Global until proven otherwise</h2>
+  <p>By default, all variables are global.</p>
+<pre class="language-javascript">
+cat = "An adorable pet that purrs cutely.";
+</pre>
+  <div class="slide">
+    <p>Imagine what a bad scene it would be if you were using some JavaScript on the page that <strong>also</strong> defined <code>cat</code>!</p>
+<pre class="language-javascript">
+animalpedia = function() {
+  cat = "A furry mammal with sharp teeth and claws.";
+  console.log(cat);
+}
+</pre>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Scoping Variables</h2>
+  <p>If we put <code>var</code> infront of our variable, we <em>scope</em> it to its function.</p>
+<pre class="language-javascript">
+cat = "An adorable pet that purrs cutely."; //global cat
+
+animalpedia = function() {
+  var cat = "A furry mammal with sharp teeth and claws."; //local cat
+  console.log(cat);
+}
+</pre>
+</section>
+
+
+<section class="slide">
+  <h1 class="vcenter">Closures</h1>
+</section>
+
+<section class="slide">
+  <h2>Powerfully Private</h2>
+  <p>When variables are scoped to a function, only the function and sny functions it contains can access them.</p> 
+  <p>TODO ILLO function, its variables, and internal functions access to them ("I'm touching your CDs!")</p>
+  <p class="slide">Closures happen when you nest a function inside a function&hellip;</p> 
+  <p class="slide">&hellip;and then use the variables of the containing function!</p> 
+</section>
+
+<section class="slide">
+  <h2>A Closure in Action</h2>
+  <pre class="language-javascript">
+function princess() {
+  var dragons = ["Great Blue", "Glitterfang", "Fafnir"]; // there are 3 dragons to slay
+
+  return {
+    slayDragon: function() {
+      return dragons.pop(); //pop gets and removes the last array item
+    }
+  };
+}
+
+var littleGirl = princess(); //littleGirl is now secretly a princess
+
+// Now she can slay dragons no one can see.
+littleGirl.slayDragon(); 
+littleGirl.slayDragon(); 
+littleGirl.slayDragon(); 
+</pre>
+  <p class="slide">Inspired by <a href="http://stackoverflow.com/questions/111102/how-do-javascript-closures-work/6472397#6472397">my favorite explanation of closures ever</a>.</p>
+  <p class="slide"><a href="http://javascriptissexy.com/understand-javascript-closures-with-ease/">Deep dive on closures at javascriptissexy.com</a></p>
+</section>
+
+
+
+<section class="slide">
+  <h1 class="vcenter">Functions, <code>this</code>, and the Global Object</h1>
+</section>
+
+<section class="slide">
+  <h2><code>this</code></h2>
+  <p>When you make a function, a <code>this</code> is born.</p>
+  <div class="slide">
+    <p><code>this</code> is like a variable that refers to the object containing the function.</p>
+      <pre class="language-javascript">
+var ourObject = {
+  func1: function() {
+    console.log(this); // logs ourObject
+  }  
+}
+
+ourObject.func1();
+</pre>
+  <div class="slide">
+    <p>By default, <code>this</code> refers to the Global Object (because it's the big catch-all).</p> 
+    <pre class="language-javascript">
+console.log(this);
+</pre>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Nesting functions and <code>this</code></h2>
+  <p>In ECMAScript 3, inside nested functions, <code>this</code> goes back to referring to the Global Object.</p>
+  <pre class="language-javascript">
+var ourObject = {
+  func1: function() {
+      console.log(this); // logs ourObject
+      var func2 = function() {
+          console.log(this) // logs window
+      }();
+  }  
+}
+
+ourObject.func1();
+</pre>
+  <p class="slide">So lame.</p>
+</section>
+
+<section class="slide">
+  <h2><code>that</code></h2>
+  <p>So store <code>this</code> in a variable!</p>
+    <pre class="language-javascript">
+var ourObject = {
+  func1: function() {
+      console.log(this); // logs ourObject
+      var that = this;
+      var func2 = function() {
+          console.log(that) // logs ourObject
+      }();
+  }  
+}
+
+ourObject.func1();
+</pre>
+</section>
+
+
+<section class="slide">
+  <h1 class="vcenter">Hoisting</h1>
+</section>
+
+<section class="slide">
+  <h2>The function or the egg?</h2>
+  <p>You can use a <strong>function statement</strong> in a script before you define it, like so:</p>
+  <pre class="language-javascript">
+var crow = function() {
+    caw(); // caw() hasn't been defined yet, but you can still invoke it.
+    function caw() {console.log('Caw caw caw!');}
+}(); // invoke, remember the parentheses?
+  </pre>
+  <p><a href="http://johnkpaul.com/blog/2013/02/11/what-is-hoisting-really/">More reading on hoisting.</a></p>
+</section>
+
+<section class="slide">
+  <h1 class="vcenter">Recursion</h1>
+</section>
+
+<section class="slide">
+  <h2>Functions calling themselves</h2>
+  <p>Recursion is a term for a JavaScript pattern where a function calls itself. See this example from Cody Lindley:</p>
+  <pre class="language-javascript">
+var countDownFrom = function countDownFrom(num) {
+  console.log(num);
+  num--;//reduce num by 1
+  if (num < 0){return false;} // if num < 0 return function with no recursion
+  countDownFrom(num);
+};
+countDownFrom(5); // kick off the function, which logs separately 5,4,3,2,1,0
+</pre>
+</section>
+
+<section class="slide">
+  <h1 class="vcenter"><abbr title="Application programming interfaces">APIs</abbr></h1>
+</section>
+
+<section class="slide">
+  <h2>What's an <abbr title="Application programming interface">API</abbr>?</h2>
+  <p>An <abbr title="Application programming interface">API</abbr> is a set of rules different programs can use to talk to each other.</p>
+  <p class="slide">There are many <abbr title="Application programming interfaces">APIs</abbr> available to you.</p>
+  <p class="slide">Some, like the <a href="https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/specification.html">Web Audio <abbr title="Application programming interface">API</abbr></a> and <a href="http://html5doctor.com/an-introduction-to-the-canvas-2d-api/">Canvas <abbr title="Application programming interface">API</abbr></a>, are native to the browser.</p>
+  <p class="slide">Others, like <a href="https://dev.twitter.com/docs">Twitter's <abbr title="Application programming interface">API</abbr>,</a> are provided so developers can interact with a company's data.</p>
+</section>
+
+<section class="slide">
+  <h2>The <abbr title="Document Object Model">DOM</abbr> and jQuery</h2>
+  <p>Every time you use JavaScript to manipulate the contents of a page, you're using the <abbr title="Document Object Model">DOM</abbr>, or Document Object Model <abbr title="Application programming interface">API</abbr>.</p>
+  <p class="slide">Every element in the HTML tree has a corresponding object available to JS called a <code>node</code></p>
+  <p class="slide">jQuery provides <a href="http://api.jquery.com/category/manipulation/dom-insertion-inside/">normalized methods for getting at and manipulating the DOM</a>.</p>
+</section>
+
+<section class="slide">
+  <h2>Revisiting the Global Object</h2>
+  <p class="slide">In the browser, our Global Object <code>window</code> always has a <code>document</code> node: the HTML document.</p>
+  <div class="slide">
+    <p>Remember this from earlier?</p>
+<pre class="language-javascript">
+$('p'); // jQuery gets p
+
+document.querySelector('p'); // Regular ol' JS gets p
+</pre>
+  </div>
+  <p class="slide">So <code>document.querySelector('p');</code> is the same as <code>window.document.querySelector('p');</code></p>
+</section>
+
+<section class="slide">
+  <h2>Hungry for moar?</h2>
+  <h3>Links</h3>
+    <ul>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">Mozilla's Developer Network (MDN)</a></li>
+      <li>My post, <a href="http://rachelnabors.com/2013/01/javascript-study-for-designers/">JavaScript Study for Designers</a></li>
+      <li><a href="http://javascriptissexy.com/">JavaScript.is(Sexy)</a></li>
+    </ul>
+  <h3>Books</h3>
+    <ul>
+      <li><a href="http://www.amazon.com/gp/product/B00ARPT74S/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B00ARPT74S&amp;linkCode=as2&amp;tag=mangapunk-20">JavaScript Enlightenment</a><img src="http://www.assoc-amazon.com/e/ir?t=mangapunk-20&amp;l=as2&amp;o=1&amp;a=B00ARPT74S" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></li>
+      <li><a href="http://www.amazon.com/gp/product/B00BD99PYY/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B00BD99PYY&amp;linkCode=as2&amp;tag=mangapunk-20">DOM Enlightenment</a><img src="http://www.assoc-amazon.com/e/ir?t=mangapunk-20&amp;l=as2&amp;o=1&amp;a=B00BD99PYY" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></li>
+      <li><a href="http://www.amazon.com/gp/product/B00AC1RP14/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B00AC1RP14&amp;linkCode=as2&amp;tag=mangapunk-20">Effective JavaScript</a><img src="http://www.assoc-amazon.com/e/ir?t=mangapunk-20&amp;l=as2&amp;o=1&amp;a=B00AC1RP14" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+</li>
+    </ul>
+</section>
+
+<section class="slide">
+  <h2>Thank you!</h2>
+  <p>Bookmark these slides: <a href="http://rachelnabors.com/javascript-for-designers">rachelnabors.com/javascript-for-designers</a></p>
+  <h3>Keep in Touch</h3>
+  <ul>
+    <li><a href="https://twitter.com/rachelnabors">@rachelnabors</a></li>
+    <li><a href="http://rachelnabors.com">rachelnabors.com</a></li>
+    <li><a href="https://github.com/rachelnabors">github.com/rachelnabors</a></li>
+    <li><a href="http://codepen.io/rachelnabors">codepen.io/rachelnabors</a></li>
+  </ul>
+</section>
+
+<!-- Begin extension snippets. Add or remove as needed. -->
+
+<!-- deck.navigation snippet -->
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.goto snippet -->
+<form action="." method="get" class="goto-form">
+  <label for="goto-slide">Go to slide:</label>
+  <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+  <datalist id="goto-datalist"></datalist>
+  <input type="submit" value="Go">
+</form>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- End extension snippets. -->
+
+
+<!-- Required JS files. -->
+<script src="jquery-1.7.2.min.js"></script>
+<script src="core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="core/deck.core.js"></script>
+<script src="extensions/hash/deck.hash.js"></script>
+<script src="extensions/menu/deck.menu.js"></script>
+<script src="extensions/goto/deck.goto.js"></script>
+<script src="extensions/status/deck.status.js"></script>
+<script src="extensions/navigation/deck.navigation.js"></script>
+<script src="extensions/scale/deck.scale.js"></script>
+<script src="extensions/pointer/deck.pointer.js"></script>
+<script src="extensions/syntaxhighlighter/deck.syntaxhighlighter.js"></script>
+<script src="extensions/iframes/deck.iframes.js"></script>
+<!-- <script type="text/javascript" src="extensions/presenterview/deck.presenterview.js"></script> -->
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+  $(function() {
+    $.deck('.slide');
+//        $.deck('iframes');
+  });
+</script>
+</body>
+</html>
