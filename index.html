@@ -173,7 +173,7 @@ document.querySelector('p'); // Regular ol' JS gets p
 <section class="slide">
   <h2>What does an Object look like?</h2>
   <p>TODO ILLO of an object</p>
-  <p class="slide">Variables created inside objects are called <strong>properties</strong>.</code>
+  <p class="slide">Objects are just collections of things, things called <strong>properties</strong>.</code>
   <div class="slide">
     <p>And this is how that looks in JavaScript.</p>
     <pre class="language-javascript">
@@ -423,7 +423,7 @@ var addExpression = function(x, y) {
 </section>
 
 <section class="slide">
-  <h2>Returning a function</h2>
+  <h2>Returning from a function</h2>
   <p><code>return</code> lets us return a value or object from a function.</p>
 <pre class="language-javascript">
 function redHen() {
@@ -466,13 +466,13 @@ var unicorn = {
 <section class="slide">
   <h2>Higher-order Functions</h2>
   <p>Functions that do stuff to functions are called &ldquo;higher order&rdquo; functions.</p>
-  <p class="slide">You know what's a great example of a function that does stuff to other functions?</p>
+  <p class="slide">Let's see an example of a function that does stuff to other functions.</p>
 </section>
 
 <section class="slide">
   <h2>Callbacks</h2>
   <!--ILLO Hollaback, y'all!-->
-  <p>Callbacks are higher-order functions.</p>
+  <p>Callbacks are used by higher-order functions.</p>
   <div class="slide">
     <p>A callback is when you pass a function to another function to be executed when it's finished.</p>
   <pre class="language-javascript">
@@ -480,6 +480,8 @@ $("#goodbye").click(function() { //anonymous function passed as a parameter to c
   alert("Holla back, y'all!");
 });
 </pre>
+  </div>
+  <p class="slide">Here, <code>click()</code> is a higher order function.</p>
   <p class="slide"><a href="http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/">Dive deep into callbacks at javascriptissexy.com</a></p>
 </section>
 
@@ -544,6 +546,7 @@ animalpedia = function() {
 <section class="slide">
   <h2>Scoping Variables</h2>
   <p>If we put <code>var</code> infront of our variable, we <em>scope</em> it to its function.</p>
+  <p class="slide">This is called declaring a variable.</p>
 <pre class="language-javascript">
 cat = "An adorable pet that purrs cutely."; //global cat
 
@@ -678,7 +681,7 @@ var crow = function() {
 
 <section class="slide">
   <h2>Functions calling themselves</h2>
-  <p>Recursion is a term for a JavaScript pattern where a function calls itself. See this example from Cody Lindley:</p>
+  <p>Recursion is when a function calls itself. See this example from Cody Lindley:</p>
   <pre class="language-javascript">
 var countDownFrom = function countDownFrom(num) {
   console.log(num);
@@ -696,9 +699,9 @@ countDownFrom(5); // kick off the function, which logs separately 5,4,3,2,1,0
 
 <section class="slide">
   <h2>What's an <abbr title="Application programming interface">API</abbr>?</h2>
-  <p>An <abbr title="Application programming interface">API</abbr> is a set of rules different programs can use to talk to each other.</p>
+  <p>An Application programming interface (<abbr title="Application programming interface">API</abbr>) is a set of rules different programs can use to talk to each other.</p>
   <p class="slide">There are many <abbr title="Application programming interfaces">APIs</abbr> available to you.</p>
-  <p class="slide">Some, like the <a href="https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/specification.html">Web Audio <abbr title="Application programming interface">API</abbr></a> and <a href="http://html5doctor.com/an-introduction-to-the-canvas-2d-api/">Canvas <abbr title="Application programming interface">API</abbr></a>, are native to the browser.</p>
+  <p class="slide">Some, like the <a href="https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/specification.html">Web Audio <abbr title="Application programming interface">API</abbr></a> and <a href="http://html5doctor.com/an-introduction-to-the-canvas-2d-api/">Canvas <abbr title="Application programming interface">API</abbr></a>, are browser <abbr title="Application programming interface">APIs</abbr>.</p>
   <p class="slide">Others, like <a href="https://dev.twitter.com/docs">Twitter's <abbr title="Application programming interface">API</abbr>,</a> are provided so developers can interact with a company's data.</p>
 </section>
 
