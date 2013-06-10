@@ -38,7 +38,7 @@
   <div class="talk-title">
     <hgroup>
       <h1>JavaScript for Designers</h1>
-      <h2>An Introduction to JavaScript Terms and Concepts</h2>
+      <h2>An Intro to JS Terms and Concepts</h2>
     </hgroup>
     <p><a href="http://rachelnabors.com">RachelNabors.com</a> <a href="http://twitter.com/rachelnabors" target="_blank">@RachelNabors</a></p>
   </div>
@@ -59,9 +59,11 @@
 
 <section class="slide">
   <h2>I am <strong>not</strong> a hardcore JavaScript developer.</h2>
+  <p>ILLO: I think most of this page could be a comic, like Rachel at a conference wondering wtf everyone's talking about.</p>
+  <!--it should read like I <3 CSS, thought I could learn JS by osmosis, but sucked at it for years.-->
+  <!--TODO Comic: "I'm just not good at JavaScript! I'll just stick to CSS."-->
   <p>CSS is my True Love.</p>
   <p class="slide">I struggled with JS for years. Thought I couldn't learn it.</p>
-  <!--TODO Comic: "I'm just not good at JavaScript! I'm just sticking to CSS!"-->
   <p class="slide">It felt like all the resources were by programmers for programmers. There was nothing written for me and my CSS heart.</p>
   <p class="slide">But some exciting CSS projects and good books helped me get a grip on JS.</p>
 </section>
@@ -69,9 +71,12 @@
 <section class="slide">
   <h2>You are&hellip;</h2>
   <ul>
-    <li class="slide">Familiar with jQuery and/or JavaScript--might use it, might want to use it.</li>
+    <li class="slide">Familiar with jQuery and/or JavaScript--but aren't sure how things happen under the hood.</li>
+    <!-- ILLO: It just works. Aaand now it doesn't... Crap. What did I do? -->
     <li class="slide">Suffering from imposter syndrome</li>
+    <!-- ILLO: I don't belong here. They're going to find me out. -->
     <li class="slide">Confused or annoyed when JS devs talk over your head</li>
+    <!-- ILLO: JS devs, "blah blah methods blah blah prototypal inheritance" -.- -->
   </ul>
 </section>
 
@@ -87,8 +92,13 @@
 </section>
 
 <section class="slide">
+    <h2>Plus&hellip;</h2>
+    <p>ILLO Designers who get JavaScript are called UNICORNS.</p>
+</section>
+
+<section class="slide">
   <h2>We will cover&hellip;</h2>
-  <p>Vocabulary and concepts that will help you understand and talk with developers:</p>
+  <p>A handful of all the things:</p>
   <ul>
     <li>Vanilla JS and ECMAScript</li>
     <li>Objects</li>
@@ -115,12 +125,11 @@
   <p class="slide">That standard is <a ref="https://en.wikipedia.org/wiki/ECMAScript">ECMAScript</a>.</p>
   <p class="slide">It's provided by <a href="https://en.wikipedia.org/wiki/Ecma_International"><abbr title="European Computer Manufacturers Association">ECMA</abbr> International</a>, a private, non-profit, membership-based standards organization originally founded in 1961.</p>
   <p class="slide">&ldquo;<abbr title="European Computer Manufacturers Association">ECMA</abbr>&rdquo; stands for &ldquo;European Computer Manufacturers Association&rdquo;</p>
-  <p class="slide">All decisions are consensus-driven.</p>
 </section>
 
 <section class="slide">
-  <h2>ECMAScript has versions, too.</h2>
-  <!--ILLO ECMAScript and XHTML 2 in a trash heap. HTML 5, XHTML 1 and ECMAScript 3, 5 are still on display.-->
+  <h2>ECMAScript has versions, too</h2>
+  <p>ILLO ECMAScript and XHTML 2 in a trash heap. HTML 5, XHTML 1 and ECMAScript 3, 5 are still on display.</p>
   <p class="slide">Like CSS and HTML, ECMAScript has versions.</p>
   <p class="slide">Version 4 was dropped for the same reasons XHTML 2 died on the vine.</p>
   <p class="slide">Most of us code for version 3, but 5 is well supported, and 6 is on the way.</p>
@@ -140,16 +149,16 @@
 
 <section class="slide">
   <h2>Vanilla JS <strong>is</strong> JavaScript</h2>
-  <p class="slide"><a href="http://vanilla-js.com/">Vanilla JS</a> is just JavaScript.</p>
+  <p><a href="http://vanilla-js.com/">Vanilla JS</a> is just JavaScript.</p>
   <div class="slide">
     <p>JavaScript is pretty powerful now. You don't necessarily need libraries like jQuery.</p>
     <pre class="language-javascript">
 $('p'); // jQuery gets p
 
-document.querySelector('p'); // Regular ol' JS gets p
-    </pre>
+document.querySelectorAll('p'); // Regular ol' JS gets p
+</pre>
   </div>
-  <p class="slide">If all you can write is jQuery, it's like never taking the training wheels off your bicycle.</p>
+  <p class="slide">If all you can write is jQuery, it's like never taking the training wheels off your bicycle. TODO ILLO "Don't judge me"</p>
   <p class="slide">Check out <a href="http://substack.net/weaning_yourself_off_jquery">Weaning Yourself off jQuery</a></p>
 </section>
 
@@ -284,13 +293,15 @@ castles === horses; // compares two numeric values
 <section class="slide">
   <h2>Danger: Type Coercion!</h2>
   <p>JavaScript makes assumptions about what types of thing you're comparing.</p>
-  <p class="slide">The <code>==</code> operator tries to guess what type you mean.</p>
+  <div class="slide">
+    <p>The <code>==</code> operator tries to guess what type you mean.</p>
 <pre class="language-javascript">
 friends = 1; // a number
 heart = true; // boolean value, also counts as "1"
 
 friends == heart; // JS tries to guess what you mean
 </pre>
+  </div>
   <div class="slide">
     <p>To avoid, we use <code>===</code> which never uses type coercion.</p>
 <pre class="language-javascript">
@@ -387,6 +398,7 @@ twilightSparkle.constructor //unicorn
   <h2>Functions are objects!</h2>
   <p>What's more, they are first-class objects!</p>
   <p class="slide">Meaning we can <strong>make</strong> 'em, <strong>pass</strong> 'em, <strong>return</strong> 'em, and <strong>assign</strong> 'em as variables!</p>
+  <p>TODO ILLO, cookies: making, giving, receiving, and assigning "Mimi"</p>
 </section>
 
 <section class="slide">
@@ -468,6 +480,7 @@ var unicorn = {
 <section class="slide">
   <h2>Higher-order Functions</h2>
   <p>Functions that do stuff to functions are called &ldquo;higher order&rdquo; functions.</p>
+  <p>TODO ILLO of super awesome "higher" function lording it over normal functions</p>
   <p class="slide">Let's see an example of a function that does stuff to other functions.</p>
 </section>
 
@@ -482,6 +495,7 @@ $("#goodbye").click(function() {
   alert("Holla back, y'all!");
 });
 </pre>
+    <p>TODO Illo of higher order function calling out, "Holla back, y'all!"</p>
   </div>
   <p class="slide">Here, <code>click()</code> is a higher order function.</p>
   <p class="slide"><a href="http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/">Dive deep into callbacks at javascriptissexy.com</a></p>
@@ -495,7 +509,7 @@ $("#goodbye").click(function() {
     <li class="slide"><strong>Nesting</strong> functions within functions, we'll talk about closures.</li>
     <li class="slide"><strong>Passing</strong> functions as arguments to other functions, see callbacks.</li>
   </ul>
-  <p class="slide">jQuery is a great example of functional programming.</p>
+  <p class="slide"><!--BLIP-->jQuery is a great example of functional programming.</p>
 </section>
 
 <section class="slide">
@@ -510,16 +524,13 @@ $("#goodbye").click(function() {
   <p class="slide">In the browser, the window is that Global Object.</p>
   <!--ILLO the God of Objects, maybe a turtle "It's objects all the way down." Or big giant head, host, etc.-->
   <p class="slide">It is also called the <strong>Head Object</strong> or <strong>Host Object</strong>.</p>
-  <p class="slide">It is inferred: <code>window.alert("OMG!");</code> is the same as <code>alert("OMG!");</code></p>
+  <p class="slide">It is inferred: <code>window.alert("OMG!")</code> is the same as <code>alert("OMG!")</code></p>
 </section>
 
 <section class="slide">
   <h2>The jQuery object, <abrr title="Also Known As">AKA</abrr> <code>$</code></h2>
   <p>By default, jQuery uses "$" as a shortcut for "jQuery"</p>
-  <div class="slide">
-    <p>That means this: <code>$("#id").hide();</code></p>
-    <p>Is the same as: <code>jQuery("#id").hide();</code></p>
-  </div>
+  <p class="slide">So <code>$("#id").hide();</code> is the same as <code>jQuery("#id").hide();</code></p>
   <p class="slide">The <code>jQuery</code> object <em>wraps</em> a selector, allowing you to perform jQuery <em>methods</em> on it.</p>
 </section>
 
@@ -548,7 +559,6 @@ animalpedia = function() {
 <section class="slide">
   <h2>Scoping Variables</h2>
   <p>If we put <code>var</code> infront of our variable, we <em>scope</em> it to its function.</p>
-  <p class="slide">This is called declaring a variable.</p>
 <pre class="language-javascript">
 cat = "An adorable pet that purrs cutely."; //global cat
 
@@ -557,6 +567,7 @@ animalpedia = function() {
   console.log(cat);
 }
 </pre>
+  <p class="slide">This is called declaring a variable.</p>
 </section>
 
 
@@ -637,7 +648,7 @@ var crow = function() {
     caw(); // caw() hasn't been defined yet, but you can still invoke it.
     function caw() {console.log('Caw caw caw!');}
 }(); // invoke, remember the parentheses?
-  </pre>
+</pre>
   <p><a href="http://johnkpaul.com/blog/2013/02/11/what-is-hoisting-really/">More reading on hoisting.</a></p>
 </section>
 
@@ -689,7 +700,7 @@ $('p'); // jQuery gets p
 document.querySelectorAll('p'); // Regular ol' JS gets p
 </pre>
   </div>
-  <p class="slide">So <code>document.querySelectorAll('p');</code> is the same as <code>window.document.querySelectorAll('p');</code></p>
+  <p class="slide">So <code>document.querySelectorAll('p')</code> is the same as <code>window.document.querySelectorAll('p')</code></p>
 </section>
 
 <section class="slide">
@@ -720,7 +731,7 @@ document.querySelectorAll('p'); // Regular ol' JS gets p
     <li><a href="http://codepen.io/rachelnabors">codepen.io/rachelnabors</a></li>
   </ul>
   <h3>Special Thanks</h3>
-  <p>My thanks to <a href="https://twitter.com/scott_gonzalez">@ScottGonzalez</a> and <a href="https://twitter.com/ajpiano">@ajpiano</a> for technically reviewing my slides.</p>
+  <p>My thanks to <a href="https://twitter.com/scott_gonzalez">@ScottGonzalez</a>, <a href="https://twitter.com/rmurphey">@rmurphey</a> <a href="https://twitter.com/ajpiano">@ajpiano</a> for technically reviewing my slides.</p>
 
 </section>
 
