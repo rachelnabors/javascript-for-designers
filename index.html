@@ -316,7 +316,9 @@ var unicorn = new Object();
 unicorn.color = "purple";
 unicorn.wings = true;
 unicorn.name = "Twilight Sparkle";
-unicorn.getName = function() {return "Hi, I'm " + unicorn.name;};
+unicorn.getName = function() {
+  return "Hi, I'm " + unicorn.name;
+};
 </pre>
   <p class="slide">Think of the <code>Object()</code> constructor as a cookie cutter for objects.</p>
 </section>
@@ -346,7 +348,7 @@ var Unicorn = function(name, color, wings) {
   this.name = name;
   this.color = color;
   this.wings = wings;
-  getName = function() {return "Hi, I'm " + unicorn.name;};
+  this.getName = function() {return "Hi, I'm " + unicorn.name;};
 };
 
 var twilightSparkle = new Unicorn('Twilight Sparkle', 'purple', 'true');
@@ -476,7 +478,7 @@ var unicorn = {
   <div class="slide">
     <p>A callback is when you pass a function to another function to be executed when it's finished.</p>
   <pre class="language-javascript">
-$("#goodbye").click(function() { //anonymous function passed as a parameter to click function
+$("#goodbye").click(function() { 
   alert("Holla back, y'all!");
 });
 </pre>
@@ -506,8 +508,8 @@ $("#goodbye").click(function() { //anonymous function passed as a parameter to c
   <p class="slide">By default, everything belongs to the <em>Global Object</em>.</p>
   <p class="slide">(Note the capitilization for future reference.)</p>
   <p class="slide">In the browser, the window is that Global Object.</p>
-  <!--ILLO the God of Objects, maybe a turtle "It's objects all the way down."-->
-  <p class="slide">It is also called the <strong>Head Object</strong></p>
+  <!--ILLO the God of Objects, maybe a turtle "It's objects all the way down." Or big giant head, host, etc.-->
+  <p class="slide">It is also called the <strong>Head Object</strong> or <strong>Host Object</strong>.</p>
   <p class="slide">It is inferred: <code>window.alert("OMG!");</code> is the same as <code>alert("OMG!");</code></p>
 </section>
 
@@ -564,7 +566,7 @@ animalpedia = function() {
 
 <section class="slide">
   <h2>Powerfully Private</h2>
-  <p>When variables are scoped to a function, only the function and sny functions it contains can access them.</p> 
+  <p>When variables are scoped to a function, only the function and any functions it contains can access them.</p> 
   <p>TODO ILLO function, its variables, and internal functions access to them ("I'm touching your CDs!")</p>
   <p class="slide">Closures happen when you nest a function inside a function&hellip;</p> 
   <p class="slide">&hellip;and then use the variables of the containing function!</p> 
@@ -684,10 +686,10 @@ countDownFrom(5); // kick off the function, which logs separately 5,4,3,2,1,0
 <pre class="language-javascript">
 $('p'); // jQuery gets p
 
-document.querySelector('p'); // Regular ol' JS gets p
+document.querySelectorAll('p'); // Regular ol' JS gets p
 </pre>
   </div>
-  <p class="slide">So <code>document.querySelector('p');</code> is the same as <code>window.document.querySelector('p');</code></p>
+  <p class="slide">So <code>document.querySelectorAll('p');</code> is the same as <code>window.document.querySelectorAll('p');</code></p>
 </section>
 
 <section class="slide">
@@ -718,7 +720,7 @@ document.querySelector('p'); // Regular ol' JS gets p
     <li><a href="http://codepen.io/rachelnabors">codepen.io/rachelnabors</a></li>
   </ul>
   <h3>Special Thanks</h3>
-  <p>My thanks to <a href="https://twitter.com/scott_gonzalez">@ScottGonzález</a> for technically reviewing my slides.</p>
+  <p>My thanks to <a href="https://twitter.com/scott_gonzalez">@ScottGonzalez</a> and <a href="https://twitter.com/ajpiano">@ajpiano</a> for technically reviewing my slides.</p>
 
 </section>
 
