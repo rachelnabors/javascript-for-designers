@@ -597,7 +597,7 @@ littleGirl.slayDragon();
 
 
 <section class="slide">
-  <h1 class="vcenter">Functions, <code>this</code>, and the Global Object</h1>
+  <h1 class="vcenter"><code>this</code></h1>
 </section>
 
 <section class="slide">
@@ -620,42 +620,6 @@ ourObject.func1();
 console.log(this);
 </pre>
   </div>
-</section>
-
-<section class="slide">
-  <h2>Nesting functions and <code>this</code></h2>
-  <p>In ECMAScript 3, inside nested functions, <code>this</code> goes back to referring to the Global Object.</p>
-  <pre class="language-javascript">
-var ourObject = {
-  func1: function() {
-      console.log(this); // logs ourObject
-      var func2 = function() {
-          console.log(this) // logs window
-      }();
-  }  
-}
-
-ourObject.func1();
-</pre>
-  <p class="slide">So lame.</p>
-</section>
-
-<section class="slide">
-  <h2><code>that</code></h2>
-  <p>So store <code>this</code> in a variable!</p>
-    <pre class="language-javascript">
-var ourObject = {
-  func1: function() {
-      console.log(this); // logs ourObject
-      var that = this;
-      var func2 = function() {
-          console.log(that) // logs ourObject
-      }();
-  }  
-}
-
-ourObject.func1();
-</pre>
 </section>
 
 
