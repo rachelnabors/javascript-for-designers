@@ -669,14 +669,8 @@ var addLi = function() {
 </section>
 
 <section class="slide">
-  <h2>Listening higher up the DOM</h2>
+  <h2>Listening higher up the DOM with jQuery</h2>
   <p>The solution is to listen from higher up with jQuery's <a href="http://api.jquery.com/on/"><code>on</code></a>.</p>
-<pre class="language-javascript">
-$("li").on("click", clickOnLi); // listens for clicks at top of DOM
-</pre>
-  <div class="slide">
-  <h3>Listening Locally</h3>
-  <p>If you have a lot of clicks, this is more performant:</p>
 <pre class="language-javascript">
 $("ul").on("click", "li", clickOnLi); //listens for clicks on uls only
 </pre>
