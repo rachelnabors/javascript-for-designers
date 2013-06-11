@@ -304,7 +304,7 @@ friends === heart; // takes their types into account
   <h2>The jQuery object, <abrr title="Also Known As">AKA</abrr> <code>$</code></h2>
   <p>By default, jQuery uses &ldquo;$&rdquo; as a shortcut for &ldquo;jQuery&rdquo;</p>
   <p class="slide">So <code>$("#id").hide();</code> is the same as <code>jQuery("#id").hide();</code></p>
-  <p class="slide">The <code>jQuery</code> object <em>wraps</em> a selector, allowing you to perform jQuery <em>methods</em> on it.</p>
+  <p class="slide"><code>jQuery</code> is just a big function with many methods!</p>
 </section>
 
 <section class="slide">
@@ -325,7 +325,7 @@ friends === heart; // takes their types into account
 
 <section class="slide">
   <h2>Methods</h2>
-  <p>When a function belongs to an object, it is called a <code>method</code> (of that object).</p>
+  <p>When a function is a property of an object, it is called a <code>method</code> (of that object).</p>
   <p>ILLO of diagram, again.</p>
   <pre class="language-javascript">
 var unicorn = {
@@ -364,7 +364,6 @@ var addExpression = function(x, y) {
 <section class="slide">
   <h2>Invoking a Function</h2>
   <p>To run a function, it needs parentheses.</p>
-  <p>This is called <strong>invoking</strong> a function.</p>
   <p>TODO ILLO: This is why these are here.</p>
   <pre class="language-javascript">$("#thief").hide();</pre>
 </section>
@@ -418,6 +417,30 @@ $("#goodbye").click(function() {
   </div>
   <p class="slide">Here, <code>click()</code> is a higher order function.</p>
   <p class="slide"><a href="http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/">Dive deep into callbacks at javascriptissexy.com</a></p>
+</section>
+
+<section class="slide">
+  <h1 class="vcenter">Making Objects with Functions</h1>
+</section>
+
+<section class="slide">
+  <h2>Constructor Functions</h2>
+  <p>Useful if you need to make numerous objects of the same kind of thing.</p>
+  <pre class="language-javascript">
+// making a Unicorn() constructor function!
+var Unicorn = function(name, color, wings) { 
+  this.name = name;
+  this.color = color;
+  this.wings = wings;
+  this.getName = function() {return "Hi, I'm " + unicorn.name;};
+};
+
+var twilightSparkle = new Unicorn('Twilight Sparkle', 'purple', 'true');
+
+typeof twilightSparkle //object
+
+twilightSparkle.constructor //unicorn
+</pre>
 </section>
 
 
@@ -536,24 +559,6 @@ var crow = function() {
 }(); // invoke, remember the parentheses?
 </pre>
   <p><a href="http://johnkpaul.com/blog/2013/02/11/what-is-hoisting-really/">More reading on hoisting.</a></p>
-</section>
-
-<section class="slide">
-  <h1 class="vcenter">Recursion</h1>
-</section>
-
-<section class="slide">
-  <h2>Functions calling themselves</h2>
-  <p>Recursion is when a function calls itself. See this example from Cody Lindley:</p>
-  <pre class="language-javascript">
-var countDownFrom = function countDownFrom(num) {
-  console.log(num);
-  num--;//reduce num by 1
-  if (num < 0){return false;} // if num < 0 return function with no recursion
-  countDownFrom(num);
-};
-countDownFrom(5); // kick off the function, which logs separately 5,4,3,2,1,0
-</pre>
 </section>
 
 <section class="slide">
