@@ -103,8 +103,6 @@
     <li>Vanilla JS and ECMAScript</li>
     <li>Objects</li>
     <li>Functions</li>
-    <li>Constructors</li>
-    <li>Prototypal Inheritance</li>
     <li>Callbacks</li>
     <li>Hoisting</li>
     <li>Closures</li>
@@ -119,20 +117,10 @@
 
 <section class="slide">
   <h2>ECMAScript <strong>is</strong> JavaScript</h2>
-  <!--ILLO 1. Wow, this JavaScript stuff is more popular than Java! But the browsers are making a muck of it. 2. Quickly, form a standardization committee!-->
-  <p class="slide">In 1997, an international standard for JavaScript was formalized.</p>
-  <p class="slide">Browsers try to conform to this standard the same way they try to conform to standards provided by the W3C for HTML and CSS.</p>
-  <p class="slide">That standard is <a ref="https://en.wikipedia.org/wiki/ECMAScript">ECMAScript</a>.</p>
-  <p class="slide">It's provided by <a href="https://en.wikipedia.org/wiki/Ecma_International"><abbr title="European Computer Manufacturers Association">ECMA</abbr> International</a>, a private, non-profit, membership-based standards organization originally founded in 1961.</p>
+  <p class="slide">Like CSS and HTML, JavaScript has versions and a standard.</p>
   <p class="slide">&ldquo;<abbr title="European Computer Manufacturers Association">ECMA</abbr>&rdquo; stands for &ldquo;European Computer Manufacturers Association&rdquo;</p>
-</section>
-
-<section class="slide">
-  <h2>ECMAScript has versions, too</h2>
-  <p>ILLO ECMAScript and XHTML 2 in a trash heap. HTML 5, XHTML 1 and ECMAScript 3, 5 are still on display.</p>
-  <p class="slide">Like CSS and HTML, ECMAScript has versions.</p>
-  <p class="slide">Version 4 was dropped for the same reasons XHTML 2 died on the vine.</p>
   <p class="slide">Most of us code for version 3, but 5 is well supported, and 6 is on the way.</p>
+  <p class="slide">Version 4 was dropped for the same reasons XHTML 2 died on the vine.</p>
 </section>
 
 <section class="slide">
@@ -183,16 +171,20 @@ document.querySelectorAll('p'); // Regular ol' JS gets p
   <h2>What does an Object look like?</h2>
   <p>TODO ILLO of an object</p>
   <p class="slide">Objects are just collections of things, things called <strong>properties</strong>.</code>
-  <div class="slide">
-    <p>And this is how that looks in JavaScript.</p>
-    <pre class="language-javascript">
-var unicorn = {
-  color: 'purple',
-  name: 'Twilight Sparkle',
-  wings: true
-}
+</section>
+
+<section class="slide">
+  <h2>Making Objects</h2>
+  <p>You can make an object using <strong>Object Literals</strong>:</p>
+  <pre class="language-javascript">
+unicorn = {
+  name: "Twilight Sparkle",
+  color: "purple",
+  wings: true,
+  getName: function() {return "Hi, I'm " + unicorn.name;}
+};
 </pre>
-  </div>
+  <p class="slide">Object literals are the preferred way to make objects.</p>
 </section>
 
 <section class="slide">
@@ -205,17 +197,17 @@ var unicorn = {
 <section class="slide">
   <h2>Complex objects</h2>
   <ul>
-    <li class="slide"><strong>Object()</strong> is a generic JavaScript object:
+    <li class="slide"><strong>Object</strong> is a generic JavaScript object:
 <pre class="language-javascript">
-boots = new Object();
+boots = {};
 </pre>
     </li>
-    <li class="slide"><strong>Array()</strong> is great for lists:
+    <li class="slide"><strong>Array</strong> is great for lists:
 <pre class="language-javascript">
-toDo = new Array('Forge Sword', 'Slay Dragon', 'Ride off into Sunset');
+toDo = ['Forge Sword', 'Slay Dragon', 'Ride off into Sunset'];
 </pre>
     </li>
-    <li class="slide"><strong>Function()</strong> (more on this one soon!)</li>
+    <li class="slide"><strong>Function</strong> does things (more on this one soon!)</li>
   </ul>
   <p class="slide">They're <em>complex</em> because they can contain lots of complicated data.</p>
 </section>
@@ -224,17 +216,17 @@ toDo = new Array('Forge Sword', 'Slay Dragon', 'Ride off into Sunset');
   <h2>Primitive Values</h2>
   <p><strong>Primitive Values</strong> are the simplest forms of information an object can represent.</p>
   <ul>
-    <li class="slide"><strong>String()</strong> is just text:
+    <li class="slide"><strong>String</strong> is just text:
 <pre class="language-javascript">
 ballad = "I miss you, but I haven't met you yet.";
 </pre>
     </li>
-    <li class="slide"><strong>Boolean()</strong> has two values, true or false:
+    <li class="slide"><strong>Boolean</strong> has two values, true or false:
 <pre class="language-javascript">
 sword = true;
 </pre>
     </li>
-    <li class="slide"><strong>Number()</strong> for numberic values:
+    <li class="slide"><strong>Number</strong> for numeric values:
 <pre class="language-javascript">
 castles = 15;
 </pre>
@@ -244,33 +236,12 @@ castles = 15;
 </section>
 
 <section class="slide">
-  <h2>Complex Objects vs. Primitive Values</h2>
-  <p>Did you notice something weird about how we made primitive values vs. complex objects?</p>
-<pre class="language-javascript">
-boots = new Object(); //complex object
-
-castles = 15; //primitive value
-</pre>
-  <p class="slide">We use <code><strong>new</strong> Object()</code> (or new Array(), etc.) when making a complex object.</p>
-  <p class="slide"><code>Object()</code> is a constructor function. More on those soon!</p>
-</section>
-
-<section class="slide">
-  <h2>Object() as a Constructor</h2>
-  <p><code>Object()</code> makes simple values harder to compare and identify by wrapping them in an object.</p>
+  <h2>Comparing Complex Objects</h2> 
   <div class="slide">
-    <h3>A Number()/String()/etc. is an Object() first</h3>
+    <h3><strong>Complex objects</strong> don't compare by their values</h3>
 <pre class="language-javascript">
-castles = new Number(15);
-typeof castles; // it's an Object()!
-</pre>
-  </div>
-
-  <div class="slide">
-    <h3>Objects() don't compare by their values</h3>
-<pre class="language-javascript">
-castles = new Number(15);
-horses = new Number(15);
+castles = ["summer", "winter"];
+pegasi = ["Rainbow Dash", "Fluttershy"];
 
 castles === horses; // compares two Objects(), not their numeric values
 </pre>
@@ -279,11 +250,11 @@ castles === horses; // compares two Objects(), not their numeric values
 
 
 <section class="slide">
-    <h2>Primitives are Values.</h2>
+    <h2>Comparing Primitives</h2>
     <p>Primitives are not objects. They're values.</p>
 <pre class="language-javascript">
-castles = 15;
-horses = 15;
+castles = 2;
+horses = 2;
 
 castles === horses; // compares two numeric values
 </pre>
@@ -291,7 +262,7 @@ castles === horses; // compares two numeric values
 </section>
 
 <section class="slide">
-  <h2>Danger: Type Coercion!</h2>
+  <h2>Type Coercion</h2>
   <p>JavaScript makes assumptions about what types of thing you're comparing.</p>
   <div class="slide">
     <p>The <code>==</code> operator tries to guess what type you mean.</p>
@@ -303,91 +274,37 @@ friends == heart; // JS tries to guess what you mean
 </pre>
   </div>
   <div class="slide">
-    <p>To avoid, we use <code>===</code> which never uses type coercion.</p>
+    <p>Use <code>===</code> which compares by type first, value second.</p>
 <pre class="language-javascript">
 friends = 1; 
 heart = true; 
 
 friends === heart; // takes their types into account
 </pre>
-  <p>TODO ILLO of the false heart vs true heart, 1 vs 0</p>
   </div>
   <p class="slide"><a href="http://www.impressivewebs.com/why-use-triple-equals-javascipt/">You can dive deep on this.</a></p>
 </section>
 
+
+
 <section class="slide">
-  <h1 class="vcenter">Making Objects</h1>
+  <h1 class="vcenter">Very Important Objects</h1>
 </section>
 
 <section class="slide">
-  <h2>Constructor Functions</h2>
-  <p><strong>Constructor functions</strong> are functions that make new objects.</p>
-<pre class="language-javascript">
-var unicorn = new Object();
-unicorn.color = "purple";
-unicorn.wings = true;
-unicorn.name = "Twilight Sparkle";
-unicorn.getName = function() {
-  return "Hi, I'm " + unicorn.name;
-};
-</pre>
-  <p class="slide">Think of the <code>Object()</code> constructor as a cookie cutter for objects.</p>
+  <h2>The Global Object: God of objects</h2>
+  <p>When you create a function or a variable, it automatically belongs to an object.</p>
+  <p class="slide">By default, everything belongs to the <em>Global Object</em>.</p>
+  <p class="slide">In the browser, the window is that Global Object.</p>
+  <p class="slide">It is also called the <strong>Head Object</strong> or <strong>Host Object</strong>.</p>
+  <p class="slide">It is inferred: <code>window.alert("OMG!")</code> is the same as <code>alert("OMG!")</code></p>
 </section>
 
 <section class="slide">
-  <h2>Object Literals</h2>
-  <p><strong>Object Literals</strong> are a more concise way to create objects on the fly.</p>
-  <pre class="language-javascript">
-var unicorn = {
-  name: "Twilight Sparkle",
-  color: "purple",
-  wings: true,
-  getName: function() {return "Hi, I'm " + unicorn.name;}
-};
-</pre>
-  <p class="slide">This is the preferred way to make objects 'cuz it's so tidy.</p>
-</section>
-
-<section class="slide">
-  <h2>Prototypal Inheritance</h2>
-  <p>Objects can have babies via constructor functions.</p>
-  <div class="slide">
-    <p>When they do, they pass on their methods and properties to the babeh objects.</p>
-<pre class="language-javascript">
-// making a Unicorn() constructor function!
-var Unicorn = function(name, color, wings) { 
-  this.name = name;
-  this.color = color;
-  this.wings = wings;
-  this.getName = function() {return "Hi, I'm " + unicorn.name;};
-};
-
-var twilightSparkle = new Unicorn('Twilight Sparkle', 'purple', 'true');
-
-typeof twilightSparkle //object
-
-twilightSparkle.constructor //unicorn
-</pre>
-  </div>
-  <p class="slide">This is called <strong>prototypal inheritance</strong></p>
-</section>
-
-<section class="slide">
-  <h2>Object-Oriented Programming</h2>
-  <p>Watch <a href="http://www.youtube.com/watch?feature=player_detailpage&amp;v=c5kfCH50wl0#t=96s">this video for a few moments</a> while I drink some water.</p>
-  <p><em>(It's still hard for me to describe <abbr title="Object-Oriented Programming">OOP</abbr> elegantly.)</em></p>
-</section>
-
-<section class="slide">
-  <h2>First-Class Objects</h2>
-  <p>An object is first-class if it can be:</p>
-  <ul>
-    <li class="slide"><strong>Constructed</strong> on the fly</li>
-    <li class="slide"><strong>Passed</strong> as a parameter</li>
-    <li class="slide"><strong>Returned</strong> from an operation</li>
-    <li class="slide"><strong>Assigned</strong> to a variable</li>
-  </ul>
-  <p class="slide">Let's talk about another first-class object.</p>
+  <h2>The jQuery object, <abrr title="Also Known As">AKA</abrr> <code>$</code></h2>
+  <p>By default, jQuery uses &ldquo;$&rdquo; as a shortcut for &ldquo;jQuery&rdquo;</p>
+  <p class="slide">So <code>$("#id").hide();</code> is the same as <code>jQuery("#id").hide();</code></p>
+  <p class="slide">The <code>jQuery</code> object <em>wraps</em> a selector, allowing you to perform jQuery <em>methods</em> on it.</p>
 </section>
 
 <section class="slide">
@@ -396,17 +313,33 @@ twilightSparkle.constructor //unicorn
 
 <section class="slide">
   <h2>Functions are objects!</h2>
-  <p>What's more, they are first-class objects!</p>
-  <p class="slide">Meaning we can <strong>make</strong> 'em, <strong>pass</strong> 'em, <strong>return</strong> 'em, and <strong>assign</strong> 'em as variables!</p>
+  <p>Functions are <strong>first-class objects,</strong> meaning they can be:</p>
+    <ul>
+    <li class="slide"><strong>Constructed</strong> on the fly</li>
+    <li class="slide"><strong>Passed</strong> as a parameter</li>
+    <li class="slide"><strong>Returned</strong> from an operation</li>
+    <li class="slide"><strong>Assigned</strong> to a variable</li>
+  </ul>
   <p>TODO ILLO, cookies: making, giving, receiving, and assigning "Mimi"</p>
 </section>
 
 <section class="slide">
-  <h2>There are 3 ways to make a function</h2>
+  <h2>Methods</h2>
+  <p>When a function belongs to an object, it is called a <code>method</code> (of that object).</p>
+  <p>ILLO of diagram, again.</p>
   <pre class="language-javascript">
-// function constructor
-var addConstructor = new Function('x', 'y', 'return x + y'); //last parameter is the function logic
+var unicorn = {
+  name: "Twilight Sparkle",
+  color: "purple",
+  wings: true,
+  getName: function() {return "Hi, I'm " + unicorn.name;}
+};
+</pre>
+</section>
 
+<section class="slide">
+  <h2>Making a function</h2>
+  <pre class="language-javascript">
 // function statement
 function addStatement(x, y) {
   return x + y; 
@@ -416,15 +349,14 @@ function addStatement(x, y) {
 var addExpression = function(x, y) {
     return x + y;
 };
-  </pre>
+</pre>
 </section>
 
 <section class="slide">
   <h2>Functions do stuff</h2>
-  <p>Functions can be used to construct objects (as we've seen), return a value, or just run code.</p>
+  <p>Functions can be used to construct objects, return a value, or just run code.</p>
   <div class="slide">
       <p>Think of them as the verbs of JavaScript.</p>
-      <p>TODO ILLO <em>Document contains paragraphs.</em></p>
       <pre class="language-javascript">document.querySelectorAll("p");</pre>
   </div>
 </section>
@@ -465,20 +397,6 @@ $("#attack").click(function() { //anonymous function
 </section>
 
 <section class="slide">
-  <h2>Methods</h2>
-  <p>When a function belongs to an object, it is called a <code>method</code> (of that object).</p>
-  <p>ILLO of diagram, again.</p>
-  <pre class="language-javascript">
-var unicorn = {
-  name: "Twilight Sparkle",
-  color: "purple",
-  wings: true,
-  getName: function() {return "Hi, I'm " + unicorn.name;}
-};
-</pre>
-</section>
-
-<section class="slide">
   <h2>Higher-order Functions</h2>
   <p>Functions that do stuff to functions are called &ldquo;higher order&rdquo; functions.</p>
   <p>TODO ILLO of super awesome "higher" function lording it over normal functions</p>
@@ -502,39 +420,6 @@ $("#goodbye").click(function() {
   <p class="slide"><a href="http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/">Dive deep into callbacks at javascriptissexy.com</a></p>
 </section>
 
-<section class="slide">
-  <h2>Functional Programming</h2>
-  <p>A style of programming characterized by:</p>
-  <ul>
-    <li class="slide"><strong>Abstraction</strong> of frequently used functions to simplify their use.</li>
-    <li class="slide"><strong>Nesting</strong> functions within functions, we'll talk about closures.</li>
-    <li class="slide"><strong>Passing</strong> functions as arguments to other functions, see callbacks.</li>
-  </ul>
-  <p class="slide"><!--BLIP-->jQuery is a great example of functional programming.</p>
-</section>
-
-<section class="slide">
-  <h1 class="vcenter">Very Important Objects</h1>
-</section>
-
-<section class="slide">
-  <h2>The Global Object: God of objects</h2>
-  <p>When you create a function or a variable, it automatically belongs to an object.</p>
-  <p class="slide">By default, everything belongs to the <em>Global Object</em>.</p>
-  <p class="slide">(Note the capitilization for future reference.)</p>
-  <p class="slide">In the browser, the window is that Global Object.</p>
-  <!--ILLO the God of Objects, maybe a turtle "It's objects all the way down." Or big giant head, host, etc.-->
-  <p class="slide">It is also called the <strong>Head Object</strong> or <strong>Host Object</strong>.</p>
-  <p class="slide">It is inferred: <code>window.alert("OMG!")</code> is the same as <code>alert("OMG!")</code></p>
-</section>
-
-<section class="slide">
-  <h2>The jQuery object, <abrr title="Also Known As">AKA</abrr> <code>$</code></h2>
-  <p>By default, jQuery uses "$" as a shortcut for "jQuery"</p>
-  <p class="slide">So <code>$("#id").hide();</code> is the same as <code>jQuery("#id").hide();</code></p>
-  <p class="slide">The <code>jQuery</code> object <em>wraps</em> a selector, allowing you to perform jQuery <em>methods</em> on it.</p>
-</section>
-
 
 <section class="slide">
   <h1 class="vcenter">Scope and Variables</h1>
@@ -550,7 +435,7 @@ cat = "An adorable pet that purrs cutely.";
     <p>Imagine what a bad scene it would be if you were using some JavaScript on the page that <strong>also</strong> defined <code>cat</code>!</p>
 <pre class="language-javascript">
 animalpedia = function() {
-  cat = "A furry mammal with sharp teeth and claws.";
+  cat = "A menace to birds.";
   console.log(cat);
 }
 </pre>
