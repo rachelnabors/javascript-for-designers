@@ -276,19 +276,10 @@ friends == heart; // JS tries to guess what you mean
   <div class="slide">
     <p>Use <code>===</code> which compares by type first, value second.</p>
 <pre class="language-javascript">
-friends = 1; 
-heart = true; 
-
 friends === heart; // takes their types into account
 </pre>
   </div>
   <p class="slide"><a href="http://www.impressivewebs.com/why-use-triple-equals-javascipt/">You can dive deep on this.</a></p>
-</section>
-
-
-
-<section class="slide">
-  <h1 class="vcenter">Very Important Objects</h1>
 </section>
 
 <section class="slide">
@@ -298,13 +289,6 @@ friends === heart; // takes their types into account
   <p class="slide">In the browser, the window is that Global Object.</p>
   <p class="slide">It is also called the <strong>Head Object</strong> or <strong>Host Object</strong>.</p>
   <p class="slide">It is inferred: <code>window.alert("OMG!")</code> is the same as <code>alert("OMG!")</code></p>
-</section>
-
-<section class="slide">
-  <h2>The jQuery object, <abrr title="Also Known As">AKA</abrr> <code>$</code></h2>
-  <p>By default, jQuery uses &ldquo;$&rdquo; as a shortcut for &ldquo;jQuery&rdquo;</p>
-  <p class="slide">So <code>$("#id").hide();</code> is the same as <code>jQuery("#id").hide();</code></p>
-  <p class="slide"><code>jQuery</code> is just a big function with many methods!</p>
 </section>
 
 <section class="slide">
@@ -366,6 +350,7 @@ var addExpression = function(x, y) {
   <p>To run a function, it needs parentheses.</p>
   <p>TODO ILLO: This is why these are here.</p>
   <pre class="language-javascript">$("#thief").hide();</pre>
+  <p class="slide">Anything you put inside those parentheses are <strong>arguments</strong> the function can use.</p>
 </section>
 
 <section class="slide">
@@ -380,7 +365,7 @@ function redHen() {
     console.log("Plot against the humans."); // doesn't happen, after return
 }
 
-var Henrietta = redHen(); // create an object via a function
+Henrietta = redHen(); // create an object via a function
 </pre>  
   <p class="slide">It also stops the execution of the rest of the function.</p>
 </section>
@@ -397,9 +382,9 @@ $("#attack").click(function() { //anonymous function
 
 <section class="slide">
   <h2>Higher-order Functions</h2>
-  <p>Functions that do stuff to functions are called &ldquo;higher order&rdquo; functions.</p>
+  <p>Functions that take a function as an argument or return a function are &ldquo;higher-order functions&rdquo;.</p>
   <p>TODO ILLO of super awesome "higher" function lording it over normal functions</p>
-  <p class="slide">Let's see an example of a function that does stuff to other functions.</p>
+  <p class="slide">Let's see an example of a function that does stuff with other functions.</p>
 </section>
 
 <section class="slide">
@@ -427,22 +412,27 @@ $("#goodbye").click(function() {
   <h2>Constructor Functions</h2>
   <p>Useful if you need to make numerous objects of the same kind of thing.</p>
   <pre class="language-javascript">
-// making a Unicorn() constructor function!
+// making a constructor function with a function expression!
 var Unicorn = function(name, color, wings) { 
   this.name = name;
   this.color = color;
   this.wings = wings;
-  this.getName = function() {return "Hi, I'm " + unicorn.name;};
+  this.getName = function() {return "Hi, I'm " + this.name;};
 };
 
-var twilightSparkle = new Unicorn('Twilight Sparkle', 'purple', 'true');
-
-typeof twilightSparkle //object
+twilightSparkle = new Unicorn('Twilight Sparkle', 'purple', 'true');
 
 twilightSparkle.constructor //unicorn
 </pre>
 </section>
 
+
+<section class="slide">
+  <h2>The jQuery object, <abrr title="Also Known As">AKA</abrr> <code>$</code></h2>
+  <p>By default, jQuery uses &ldquo;$&rdquo; as a shortcut for &ldquo;jQuery&rdquo;</p>
+  <p class="slide">So <code>$("#id").hide();</code> is the same as <code>jQuery("#id").hide();</code></p>
+  <p class="slide"><code>jQuery</code> is just a big function with many methods!</p>
+</section>
 
 <section class="slide">
   <h1 class="vcenter">Scope and Variables</h1>
