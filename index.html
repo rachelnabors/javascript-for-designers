@@ -197,13 +197,6 @@ unicorn.getName = function() {return "Hi, I'm " + unicorn.name;};
 </section>
 
 <section class="slide">
-  <h2>Objects upon Objects</h2>
-  <p>There are <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects">many kinds of objects</a>.</p>
-  <p class="slide">Even <code>null</code> and <code>undefined</code> are objects!</p>
-  <p class="slide">Let's look at a few of them up close.</p>
-</section>
-
-<section class="slide">
   <h2>Complex objects</h2>
   <ul>
     <li class="slide"><strong>Object</strong> is a generic JavaScript object:
@@ -251,7 +244,7 @@ var castles = 15;
 var castles = ["summer", "winter"];
 var pegasi = ["Rainbow Dash", "Fluttershy"];
 
-castles === horses; // compares two Objects(), not their numeric values
+castles === pegasi; // compares two Objects(), not their numeric values
 </pre>
 </section>
 
@@ -263,7 +256,7 @@ castles === horses; // compares two Objects(), not their numeric values
 var castles = 2;
 var horses = 2;
 
-castles === horses; // compares two numeric values
+castles === pegasi; // compares two numeric values
 </pre>
   </div>
 </section>
@@ -544,12 +537,12 @@ console.log(this);
   <h2>Using Functions with jQuery</h2>
   <p>We use functions with jQuery all the time.</p>
   <pre class="language-javascript">
-$("#button1").click(function{
+$("#button1").click(function(){
   var buttonText = $("#button1").val();
   console.log(buttonText);
 });
 
-$("#button2").hover(function{
+$("#button2").hover(function(){
   var buttonText = $("#button2").val();
   console.log(buttonText);
 });
@@ -567,7 +560,7 @@ var logButton = function(){
 
 $("#button1").click(logButton);
 
-$("#button2").hover(logButton;
+$("#button2").hover(logButton);
 </pre>
 </section>
 
@@ -612,28 +605,7 @@ document.querySelectorAll('p'); // Regular ol' JS gets p
 <section class="slide">
   <h2>Events</h2>
   <p><strong>Events</strong> can be caused by users or JavaScript itself.</p>
-  <p class="slide"><a href="http://api.jquery.com/category/events/mouse-events/">Mouse events</a> are great examples of user-triggered events.</p>
-  <div class="slide">
-    <p>Look familiar?</p>
-<pre class="language-javascript">
-$(window).load(function() {
-  // Do stuff in here.
-});
-</pre>
-    <p><code>.load()</code> is an event, too&mdash;a jQuery method called when all assets have been rendered.</p>
-  </div>
-</section>
-
-<section class="slide">
-  <h2>Events</h2>
-  <p><strong>Events</strong> can be caused by users or JavaScript itself.</p>
-  <p class="slide">A human event could be triggered by a mouse hover or scrolling.</p>
-  <p class="slide">A JavaScript event could be kicked off when the DOM finishes rendering.</p>
-</section>
-
-<section class="slide">
-  <h2>Event Listeners</h2>
-  <p><strong>Event Listeners</strong> are functions that execute in response to an event.</p>
+  <p class="slide"><strong>Event Listeners</strong> are functions that execute in response to an event.</p>
   <p class="slide">On the human end of that equation, see <a href="http://api.jquery.com/category/events/mouse-events/">Mouse event handlers</a>.</p>
   <div class="slide">
     <p>Look familiar?</p>
@@ -689,9 +661,7 @@ $("li").click(clickOnLi);
     <p>But what happens when you add an element after page load?</p>
 <pre class="language-javascript">
 var addLi = function() {
-  $("ul").html({
-    "<li>New element!</li>";
-  });
+  $("ul").append("<li>New element!</li>");
 }
 </pre>
     <p class="slide">They don't work because no listeners were attached to them.</p>
@@ -702,13 +672,13 @@ var addLi = function() {
   <h2>Listening higher up the DOM</h2>
   <p>The solution is to listen from higher up with jQuery's <a href="http://api.jquery.com/on/"><code>on</code></a>.</p>
 <pre class="language-javascript">
-$("li").on("click", clickOnLi(e)); // listens for clicks at top of DOM
+$("li").on("click", clickOnLi); // listens for clicks at top of DOM
 </pre>
   <div class="slide">
   <h3>Listening Locally</h3>
   <p>If you have a lot of clicks, this is more performant:</p>
 <pre class="language-javascript">
-$("li").on("click", "ul", clickOnLi(e)); //listens for clicks on uls only
+$("ul").on("click", "li", clickOnLi); //listens for clicks on uls only
 </pre>
 </div>    
 
@@ -752,7 +722,7 @@ $("li").on("click", "ul", clickOnLi(e)); //listens for clicks on uls only
     <li><a href="http://codepen.io/rachelnabors">codepen.io/rachelnabors</a></li>
   </ul>
   <h3>Special Thanks</h3>
-  <p>My thanks to <a href="https://twitter.com/scott_gonzalez">@ScottGonzalez</a>, <a href="https://twitter.com/rmurphey">@rmurphey</a> <a href="https://twitter.com/ajpiano">@ajpiano</a> for technically reviewing my slides.</p>
+  <p>My thanks to <a href="https://twitter.com/scott_gonzalez">@ScottGonzalez</a>, <a href="https://twitter.com/rmurphey">@rmurphey</a>, <a href="https://twitter.com/ajpiano">@ajpiano</a> for technically reviewing my slides.</p>
 
 </section>
 
