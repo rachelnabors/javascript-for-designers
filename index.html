@@ -103,11 +103,8 @@
     <li>Vanilla JS and ECMAScript</li>
     <li>Objects</li>
     <li>Functions</li>
-    <li>Callbacks</li>
-    <li>Hoisting</li>
-    <li>Closures</li>
-    <li>Recursion</li>
-    <li>APIs</li>
+    <li>The DOM</li>
+    <li>Event Listeners</li>
   </ul>
 </section>
 
@@ -177,7 +174,7 @@ document.querySelectorAll('p'); // Regular ol' JS gets p
   <h2>Making Objects</h2>
   <p>You can make an object using <strong>Object Literals</strong>:</p>
   <pre class="language-javascript">
-unicorn = {
+var unicorn = {
   name: "Twilight Sparkle",
   color: "purple",
   wings: true,
@@ -185,6 +182,18 @@ unicorn = {
 };
 </pre>
   <p class="slide">Object literals are the preferred way to make objects.</p>
+</section>
+
+<section class="slide">
+  <h2>Declaring Variables</h2>
+  <p>You can store objects as <strong>variables.</strong></p>
+  <pre class="language-javascript">
+var unicorn = {};
+unicorn.name = "Rarity";
+unicorn.color = "white";
+unicorn.wings = false;
+unicorn.getName = function() {return "Hi, I'm " + unicorn.name;};
+</pre>
 </section>
 
 <section class="slide">
@@ -199,12 +208,12 @@ unicorn = {
   <ul>
     <li class="slide"><strong>Object</strong> is a generic JavaScript object:
 <pre class="language-javascript">
-boots = {};
+var boots = {};
 </pre>
     </li>
     <li class="slide"><strong>Array</strong> is great for lists:
 <pre class="language-javascript">
-toDo = ['Forge Sword', 'Slay Dragon', 'Ride off into Sunset'];
+var toDo = ['Forge Sword', 'Slay Dragon', 'Ride off into Sunset'];
 </pre>
     </li>
     <li class="slide"><strong>Function</strong> does things (more on this one soon!)</li>
@@ -218,17 +227,17 @@ toDo = ['Forge Sword', 'Slay Dragon', 'Ride off into Sunset'];
   <ul>
     <li class="slide"><strong>String</strong> is just text:
 <pre class="language-javascript">
-ballad = "I miss you, but I haven't met you yet.";
+var ballad = "I miss you, but I haven't met you yet.";
 </pre>
     </li>
     <li class="slide"><strong>Boolean</strong> has two values, true or false:
 <pre class="language-javascript">
-sword = true;
+var sword = true;
 </pre>
     </li>
     <li class="slide"><strong>Number</strong> for numeric values:
 <pre class="language-javascript">
-castles = 15;
+var castles = 15;
 </pre>
     </li>
   </ul>
@@ -237,15 +246,13 @@ castles = 15;
 
 <section class="slide">
   <h2>Comparing Complex Objects</h2> 
-  <div class="slide">
-    <h3><strong>Complex objects</strong> don't compare by their values</h3>
+  <p>Complex objects don't compare by their values</p>
 <pre class="language-javascript">
-castles = ["summer", "winter"];
-pegasi = ["Rainbow Dash", "Fluttershy"];
+var castles = ["summer", "winter"];
+var pegasi = ["Rainbow Dash", "Fluttershy"];
 
 castles === horses; // compares two Objects(), not their numeric values
 </pre>
-  </div>
 </section>
 
 
@@ -253,8 +260,8 @@ castles === horses; // compares two Objects(), not their numeric values
     <h2>Comparing Primitives</h2>
     <p>Primitives are not objects. They're values.</p>
 <pre class="language-javascript">
-castles = 2;
-horses = 2;
+var castles = 2;
+var horses = 2;
 
 castles === horses; // compares two numeric values
 </pre>
@@ -267,8 +274,8 @@ castles === horses; // compares two numeric values
   <div class="slide">
     <p>The <code>==</code> operator tries to guess what type you mean.</p>
 <pre class="language-javascript">
-friends = 1; // a number
-heart = true; // boolean value, also counts as "1"
+var friends = 1; // a number
+var heart = true; // boolean value, also counts as "1"
 
 friends == heart; // JS tries to guess what you mean
 </pre>
@@ -284,11 +291,71 @@ friends === heart; // takes their types into account
 
 <section class="slide">
   <h2>The Global Object: God of objects</h2>
-  <p>When you create a function or a variable, it automatically belongs to an object.</p>
-  <p class="slide">By default, everything belongs to the <em>Global Object</em>.</p>
+  <p>All of these objects exist inside one big catch-all object: the <em>Global Object</em>.</p>
   <p class="slide">In the browser, the window is that Global Object.</p>
   <p class="slide">It is also called the <strong>Head Object</strong> or <strong>Host Object</strong>.</p>
   <p class="slide">It is inferred: <code>window.alert("OMG!")</code> is the same as <code>alert("OMG!")</code></p>
+</section>
+
+<section class="slide">
+  <h1 class="vcenter">Objects at Work</h1>
+</section>
+
+<section class="slide">
+  <h2>Using Objects with jQuery</h2>
+  <p>We pass objects in jQuery all the time!</p>
+<pre class="language-javascript">
+$.ajax({ // an ajax call
+  url : 'info.json',
+  success : function (data) {
+    console.log("Success: " + data);
+  }
+});
+
+$("mark").css({ // modifying css
+  "color": "#a52469",
+  "font-weight": "bold",
+  "font-size": "2em"
+});
+</pre>
+</section>
+
+<section class="slide">
+  <h2>Don't Repeat Yourself!</h2>
+  <p>But say we needed to use the same object over and over&hellip;</p>
+<pre class="language-javascript">
+$("mark").css({
+  "color": "#a52469",
+  "font-weight": "bold",
+  "font-size": "2em"
+});
+
+$("button").click(function(){
+  $(this).css({
+    "color": "#a52469",
+    "font-weight": "bold",
+    "font-size": "2em"
+  });
+});
+</pre>
+</section>
+
+<section class="slide">
+  <h2>There's a variable for that</h2>
+  <p>Just put that object in a variable and pass it around!</p>
+<pre class="language-javascript">
+var highlight = {
+  "color": "#a52469",
+  "font-weight": "bold",
+  "font-size": "2em"
+};
+
+$("mark").css(highlight);
+
+$("button").click(function(){
+  $(this).css(highlight);
+});
+</pre>
 </section>
 
 <section class="slide">
@@ -365,14 +432,14 @@ function redHen() {
     console.log("Plot against the humans."); // doesn't happen, after return
 }
 
-Henrietta = redHen(); // create an object via a function
+var henrietta = redHen(); // create an object via a function
 </pre>  
   <p class="slide">It also stops the execution of the rest of the function.</p>
 </section>
 
 <section class="slide">
   <h2>Anonymous Functions</h2>
-  <p>Anonymous functions are like disposable functions, use as needed.</p>
+  <p>Anonymous functions are like disposable functions, use as needed. ILLO anon function</p>
   <pre class="language-javascript">
 $("#attack").click(function() { //anonymous function 
   console.log("You attack the dragon with your trusty sword.");
@@ -420,96 +487,24 @@ var Unicorn = function(name, color, wings) {
   this.getName = function() {return "Hi, I'm " + this.name;};
 };
 
-twilightSparkle = new Unicorn('Twilight Sparkle', 'purple', 'true');
+var twilightSparkle = new Unicorn('Twilight Sparkle', 'purple', 'true');
 
-twilightSparkle.constructor //unicorn
+var twilightSparkle.constructor //unicorn
 </pre>
-</section>
-
-
-<section class="slide">
-  <h2>The jQuery object, <abrr title="Also Known As">AKA</abrr> <code>$</code></h2>
-  <p>By default, jQuery uses &ldquo;$&rdquo; as a shortcut for &ldquo;jQuery&rdquo;</p>
-  <p class="slide">So <code>$("#id").hide();</code> is the same as <code>jQuery("#id").hide();</code></p>
-  <p class="slide"><code>jQuery</code> is just a big function with many methods!</p>
-</section>
-
-<section class="slide">
-  <h1 class="vcenter">Scope and Variables</h1>
-</section>
-
-<section class="slide">
-  <h2>Global until proven otherwise</h2>
-  <p>By default, all variables are global.</p>
-<pre class="language-javascript">
-cat = "An adorable pet that purrs cutely.";
-</pre>
-  <div class="slide">
-    <p>Imagine what a bad scene it would be if you were using some JavaScript on the page that <strong>also</strong> defined <code>cat</code>!</p>
-<pre class="language-javascript">
-animalpedia = function() {
-  cat = "A menace to birds.";
-  console.log(cat);
-}
-</pre>
-  </div>
 </section>
 
 <section class="slide">
   <h2>Scoping Variables</h2>
-  <p>If we put <code>var</code> infront of our variable, we <em>scope</em> it to its function.</p>
+  <p>Variables declared in functions are accessible only from the function.</p>
 <pre class="language-javascript">
-cat = "An adorable pet that purrs cutely."; //global cat
+var cat = "An adorable pet that purrs cutely."; //global cat
 
 animalpedia = function() {
-  var cat = "A furry mammal with sharp teeth and claws."; //local cat
+  var cat = "A menace to birds."; //local cat
   console.log(cat);
 }
 </pre>
-  <p class="slide">This is called declaring a variable.</p>
-</section>
-
-
-<section class="slide">
-  <h1 class="vcenter">Closures</h1>
-</section>
-
-<section class="slide">
-  <h2>Powerfully Private</h2>
-  <p>When variables are declared within a function, only the function and any functions it contains can access them.</p> 
-  <p>TODO ILLO function, its variables, and internal functions access to them ("I'm touching your CDs!")</p>
-  <p class="slide">Closures happen when you nest a function inside a function&hellip;</p> 
-  <p class="slide">&hellip;and then use the variables of the containing function!</p> 
-</section>
-
-<section class="slide">
-  <h2>A Closure in Action</h2>
-  <pre class="language-javascript">
-function princess() {
-  var dragons = ["Great Blue", "Glitterfang", "Fafnir"]; // there are 3 dragons to slay
-
-  return {
-    slayDragon: function() {
-      return dragons.pop(); //pop gets and removes the last array item
-    }
-  };
-}
-
-var littleGirl = princess(); //littleGirl is now secretly a princess
-
-// Now she can slay dragons no one can see.
-littleGirl.slayDragon(); 
-littleGirl.slayDragon(); 
-littleGirl.slayDragon(); 
-</pre>
-  <p class="slide">Inspired by <a href="http://stackoverflow.com/questions/111102/how-do-javascript-closures-work/6472397#6472397">my favorite explanation of closures ever</a>.</p>
-  <p class="slide"><a href="http://javascriptissexy.com/understand-javascript-closures-with-ease/">Deep dive on closures at javascriptissexy.com</a></p>
-</section>
-
-
-
-<section class="slide">
-  <h1 class="vcenter"><code>this</code></h1>
+<p class="slide"><strong>GOTCHA!</strong> If you don't use <code>var</code> inside a function, the variable belongs to the global scope!</p>
 </section>
 
 <section class="slide">
@@ -534,25 +529,51 @@ console.log(this);
   </div>
 </section>
 
-
 <section class="slide">
-  <h1 class="vcenter">Hoisting</h1>
+  <h1 class="vcenter">Functions at Work</h1>
 </section>
 
 <section class="slide">
-  <h2>The function or the egg?</h2>
-  <p>You can use a <strong>function statement</strong> in a script before you define it, like so:</p>
+  <h2>The jQuery object, <abrr title="Also Known As">AKA</abrr> <code>$</code></h2>
+  <p>By default, jQuery uses &ldquo;$&rdquo; as a shortcut for &ldquo;jQuery&rdquo;</p>
+  <p class="slide">So <code>$("#id").hide();</code> is the same as <code>jQuery("#id").hide();</code></p>
+  <p class="slide"><code>jQuery</code> is just a big function with many methods!</p>
+</section>
+
+<section class="slide">
+  <h2>Using Functions with jQuery</h2>
+  <p>We use functions with jQuery all the time.</p>
   <pre class="language-javascript">
-var crow = function() {
-    caw(); // caw() hasn't been defined yet, but you can still invoke it.
-    function caw() {console.log('Caw caw caw!');}
-}(); // invoke, remember the parentheses?
+$("#button1").click(function{
+  var buttonText = $("#button1").val();
+  console.log(buttonText);
+});
+
+$("#button2").hover(function{
+  var buttonText = $("#button2").val();
+  console.log(buttonText);
+});
 </pre>
-  <p><a href="http://johnkpaul.com/blog/2013/02/11/what-is-hoisting-really/">More reading on hoisting.</a></p>
 </section>
 
 <section class="slide">
-  <h1 class="vcenter"><abbr title="Application programming interfaces">APIs</abbr></h1>
+  <h2>Don't repeat yourself!</h2>
+  <p>Using <code>this</code>, it's easy to extract a reusable function.</p>
+  <pre class="language-javascript">
+var logButton = function(){
+  var buttonText = $(this).val();
+  console.log(buttonText);
+}
+
+$("#button1").click(logButton);
+
+$("#button2").hover(logButton;
+</pre>
+</section>
+
+
+<section class="slide">
+  <h1 class="vcenter">The <abbr title="Document Object Model">DOM</abbr> <abbr title="Application programming interface">API</abbr></h1>
 </section>
 
 <section class="slide">
@@ -585,7 +606,126 @@ document.querySelectorAll('p'); // Regular ol' JS gets p
 </section>
 
 <section class="slide">
-  <h2>Hungry for moar?</h2>
+  <h1 class="vcenter">Events and Listeners</h1>
+</section>
+
+<section class="slide">
+  <h2>Events</h2>
+  <p><strong>Events</strong> can be caused by users or JavaScript itself.</p>
+  <p class="slide"><a href="http://api.jquery.com/category/events/mouse-events/">Mouse events</a> are great examples of user-triggered events.</p>
+  <div class="slide">
+    <p>Look familiar?</p>
+<pre class="language-javascript">
+$(window).load(function() {
+  // Do stuff in here.
+});
+</pre>
+    <p><code>.load()</code> is an event, too&mdash;a jQuery method called when all assets have been rendered.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Events</h2>
+  <p><strong>Events</strong> can be caused by users or JavaScript itself.</p>
+  <p class="slide">A human event could be triggered by a mouse hover or scrolling.</p>
+  <p class="slide">A JavaScript event could be kicked off when the DOM finishes rendering.</p>
+</section>
+
+<section class="slide">
+  <h2>Event Listeners</h2>
+  <p><strong>Event Listeners</strong> are functions that execute in response to an event.</p>
+  <p class="slide">On the human end of that equation, see <a href="http://api.jquery.com/category/events/mouse-events/">Mouse event handlers</a>.</p>
+  <div class="slide">
+    <p>Look familiar?</p>
+<pre class="language-javascript">
+$(window).load(function() {
+  // Do stuff in here.
+});
+</pre>
+    <p><code>.load()</code> is a jQuery method called when all assets have been rendered.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Event Propogation</h2>
+  <p>Events will &ldquo;bubble&rdquo; up through the DOM, triggering listeners on the way.</p>
+</section>
+
+<section class="slide">
+  <h2>Stopping Propogation</h2>
+  <p>You can stop propogation by using <code>return false</code>.</p>
+<pre class="language-javascript">
+$("a").click(function(){
+  // code for lightbox ...
+
+  return false; // stops rest of function from completing
+});
+</pre>
+
+  <div class="slide">
+  <p>Which is a ham-fisted version of:</p>
+<pre class="language-javascript">
+function(e) {
+  e.preventDefault();
+  e.stopPropagation();
+}
+</pre>
+  <p><a href="http://css-tricks.com/return-false-and-prevent-default/">Dive deep with Chris Coyier.</a></p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Page Load and Event Listeners</h2>
+  <p>Event listeners are attached when the page is rendered.</p>
+<pre class="language-javascript">
+var clickOnLi = function() {
+  console.log("Clicking on list items!");
+}
+
+$("li").click(clickOnLi);
+</pre>
+  
+  <div class="slide">
+    <p>But what happens when you add an element after page load?</p>
+<pre class="language-javascript">
+var addLi = function() {
+  $("ul").html({
+    "<li>New element!</li>";
+  });
+}
+</pre>
+    <p class="slide">They don't work because no listeners were attached to them.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Listening higher up the DOM</h2>
+  <p>The solution is to listen from higher up with jQuery's <a href="http://api.jquery.com/on/"><code>on</code></a>.</p>
+<pre class="language-javascript">
+$("li").on("click", clickOnLi(e)); // listens for clicks at top of DOM
+</pre>
+  <div class="slide">
+  <h3>Listening Locally</h3>
+  <p>If you have a lot of clicks, this is more performant:</p>
+<pre class="language-javascript">
+$("li").on("click", "ul", clickOnLi(e)); //listens for clicks on uls only
+</pre>
+</div>    
+
+</section>
+
+
+<section class="slide">
+  <h1 class="vcenter">JavaScript isn't Scary</h1>
+</section>
+
+<section class="slide">
+  <h2>Your new Best Friends</h2>
+  <p>JavaScript boils down to objects, functions, and events.</p>
+</section>
+
+<section class="slide">
+  <h2>Learn moar!</h2>
   <h3>Links</h3>
     <ul>
       <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">Mozilla's Developer Network (MDN)</a></li>
