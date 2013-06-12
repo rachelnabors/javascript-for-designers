@@ -163,3 +163,13 @@
   .table-illo caption {
     background: #a69feb;
     padding: .5em; }
+
+.god-object {
+  background: url(../../img/p_head-object.png) 90% 0em no-repeat;
+  background-size: 50% auto; }
+  .god-object h2 {
+    border: 0; }
+  .god-object h2 + p {
+    width: 50%; }
+  .god-object.deck-child-current {
+    background-image: url(../../img/p_head-object-faded.png); }
