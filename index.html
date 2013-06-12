@@ -674,11 +674,15 @@ document.querySelectorAll('p'); // Regular ol' JS gets p
   <h1 class="vcenter">Events and Listeners</h1>
 </section>
 
-<section class="slide">
-  <h2>Events</h2>
+<section class="slide event-listener">
+  <h2>Events and their Listeners</h2>
   <p><strong>Events</strong> can be triggered by users, the browser, or JavaScript itself.</p>
   <p class="slide"><strong>Event Listeners</strong> are functions that execute in response to an event.</p>
-  <p class="slide">On the human end of that equation, see <a href="http://api.jquery.com/category/events/mouse-events/">Mouse event handlers</a>.</p>
+</section>
+
+<section class="slide">
+  <h2>Human and Browser Events</h2>
+  <p>On the human end of that equation, see <a href="http://api.jquery.com/category/events/mouse-events/">Mouse event handlers</a>.</p>
   <div class="slide">
     <p>Look familiar?</p>
 <pre class="language-javascript">
@@ -688,6 +692,7 @@ $(document).ready(function () {
 </pre>
     <p><code>.ready()</code> is a jQuery method whose callback runs when the DOM has been rendered.</p>
   </div>
+
 </section>
 
 <section class="slide">

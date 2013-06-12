@@ -241,11 +241,17 @@ $grey: #858585;
 }
 
 .god-object {
-	background: url(../../img/p_head-object.png) 90% 0em no-repeat;
+	background: url(../../img/p_head-object.png) 90% 0 no-repeat;
 	background-size: 50% auto;
 	h2 { border: 0;}
 	h2 + p { width: 50%;}
 	&.deck-child-current {
 		background-image: url(../../img/p_head-object-faded.png);
 	}
+}
+
+.event-listener {
+	background: url(../../img/p_event-listener.png) 90% 3em no-repeat;
+	background-size: 20% auto;
+	padding-right: 30% !important;
 }
