@@ -111,17 +111,14 @@
   <p class="slide">Like CSS and HTML, JavaScript has versions and a standard.</p>
   <p class="slide">&ldquo;<abbr title="European Computer Manufacturers Association">ECMA</abbr>&rdquo; stands for &ldquo;European Computer Manufacturers Association&rdquo;</p>
   <p class="slide">Most of us code for version 3, but 5 is well supported, and 6 is on the way.</p>
-  <p class="slide">Version 4 was dropped for the same reasons XHTML 2 died on the vine.</p>
 </section>
 
 <section class="slide">
   <h2>jQuery is <strong>written</strong> in JavaScript</h2>
   <p>If you're just getting into this space, you might be confused.</p>
   <p class="slide">jQuery is a <strong>JavaScript Library</strong></p>
-  <p class="slide">Libraries are collections of code that lets you do big things without having to write a lot of code yourself.</p>
-  <p class="slide">Think of them like ready-made themes for a WordPress site, or a set of InDesign templates: plug in and go.</p>
   <div class="slide">
-    <p>Here are some other libraries! Play with libraries. They are fun and useful :)</p>
+    <p>Libraries are collections of code that lets you do big things without having to write a lot of code yourself.</p>
     <p>TODO: logos for libraries: zepto, highcharts, skrollr, bacon impact, x-tag, processing, ember, $, Lo-Dash, Popcorn, require.js, angular, deep clone, underscore.</p>
   </div>
 </section>
@@ -137,8 +134,6 @@ $('p'); // jQuery gets p
 document.querySelectorAll('p'); // Regular ol' JS gets p
 </pre>
   </div>
-  <p class="slide">If all you can write is jQuery, it's like never taking the training wheels off your bicycle. TODO ILLO "Don't judge me"</p>
-  <p class="slide">Check out <a href="http://substack.net/weaning_yourself_off_jquery">Weaning Yourself off jQuery</a></p>
 </section>
 
 <section class="slide">
@@ -160,6 +155,7 @@ document.querySelectorAll('p'); // Regular ol' JS gets p
 
 <section class="slide">
   <h2>What does an Object look like?</h2>
+  <p>Objects are just collections of things, things called <strong>properties</strong>.</code>
   <table class="table-illo">
     <caption>unicorn</caption>
     <thead>
@@ -190,12 +186,11 @@ function() { <br />
       </tr>
     </tbody>
   </table>
-  <p class="slide">Objects are just collections of things, things called <strong>properties</strong>.</code>
 </section>
 
 <section class="slide">
   <h2>Making Objects</h2>
-  <p>You can make an object using <strong>Object Literals</strong>:</p>
+  <p>You can make an object using an <strong>Object Literal</strong>:</p>
   <pre class="language-javascript">
 var unicorn = {
   name: "Twilight Sparkle",
@@ -221,6 +216,7 @@ unicorn.getName = function() {return "Hi, I'm " + unicorn.name;};
 
 <section class="slide">
   <h2>Complex objects</h2>
+  <p>There are many different kinds of objects. Let's start with these.</p>
   <ul>
     <li class="slide"><strong>Object</strong> is a generic JavaScript object:
 <pre class="language-javascript">
@@ -257,7 +253,6 @@ var castles = 15;
 </pre>
     </li>
   </ul>
-  <p class="slide"><code>null</code> and <code>undefined</code> are primitives!</p>
 </section>
 
 <section class="slide">
@@ -282,9 +277,10 @@ var horses = 2;
 castles === pegasi; // compares two numeric values
 </pre>
   </div>
+  <p class="slide"><a href="http://www.impressivewebs.com/why-use-triple-equals-javascipt/">Learn more about why we're using <code>===</code> on your own.</a></p>
 </section>
 
-<section class="slide">
+<!-- <section class="slide">
   <h2>Type Coercion</h2>
   <p>JavaScript makes assumptions about what types of thing you're comparing.</p>
   <div class="slide">
@@ -304,7 +300,7 @@ friends === heart; // takes their types into account
   </div>
   <p class="slide"><a href="http://www.impressivewebs.com/why-use-triple-equals-javascipt/">You can dive deep on this.</a></p>
 </section>
-
+ -->
 <section class="slide">
   <h2>The Global Object: God of objects</h2>
   <p>All of these objects exist inside one big catch-all object: the <em>Global Object</em>.</p>
@@ -354,6 +350,7 @@ $("button").click(function(){
   });
 });
 </pre>
+<p><a href="http://cdpn.io/a83cbe2d5aa5e5f390aa03f01f7c1ada">Work on it live in CodePen!</a></p>
 </section>
 
 <section class="slide">
@@ -393,8 +390,38 @@ $("button").click(function(){
 <section class="slide">
   <h2>Methods</h2>
   <p>When a function is a property of an object, it is called a <code>method</code> (of that object).</p>
-  <p>ILLO of diagram, again.</p>
-  <pre class="language-javascript">
+    <table class="table-illo" style="float:left; width: 40%; font-size: .74em">
+    <caption>unicorn</caption>
+    <thead>
+      <tr>
+        <th scope="col" id="object-illo-prop">property:</th>
+        <th scope="col" id="object-illo-val">property value:</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td headers="object-illo-prop">name</td>
+        <td headers="object-illo-val">Twilight Sparkle</td>
+      </tr>
+      <tr>
+        <td headers="object-illo-prop">color</td>
+        <td headers="object-illo-val">purple</td>
+      </tr>
+      <tr>
+        <td headers="object-illo-prop">wings</td>
+        <td headers="object-illo-val">true</td>
+      </tr>
+      <tr>
+        <td headers="object-illo-prop">getName</td>
+        <td headers="object-illo-val">
+function() { <br />
+&nbsp;&nbsp;return "Hi, I'm " + unicorn.name;<br/>
+}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <pre class="language-javascript" style="float:right; width: 48%">
 var unicorn = {
   name: "Twilight Sparkle",
   color: "purple",
@@ -432,7 +459,14 @@ var addExpression = function(x, y) {
   <h2>Invoking a Function</h2>
   <p>To run a function, it needs parentheses.</p>
   <pre class="language-javascript">$("#thief").hide();</pre>
-  <p class="slide">Anything you put inside those parentheses are <strong>arguments</strong> the function can use.</p>
+  <div class="slide">
+    <p>Anything you put inside those parentheses are <strong>arguments</strong> the function can use.</p>
+<pre class="language-javascript">
+function addition(x, y) {
+  return x + y; 
+}
+</pre>
+  </div>
 </section>
 
 <section class="slide">
@@ -463,26 +497,23 @@ $("#rebel").click(function() { //anonymous function
 </pre>
 </section>
 
-<section class="slide">
+<!-- <section class="slide">
   <h2>Higher-order Functions</h2>
   <p>Functions that take a function as an argument or return a function are &ldquo;higher-order functions&rdquo;.</p>
   <p>TODO ILLO of super awesome "higher" function lording it over normal functions</p>
   <p class="slide">Let's see an example of a function that does stuff with other functions.</p>
 </section>
-
+ -->
 <section class="slide">
   <h2>Callbacks</h2>
-  <p>Callbacks are used by higher-order functions.</p>
-  <div class="slide">
     <p>A callback is when you pass a function to another function to be executed when it's finished.</p>
   <pre class="language-javascript">
 $("#goodbye").click(function() { 
   alert("Holla back, y'all!");
 });
 </pre>
-    <p>TODO Illo of higher order function calling out, "Holla back, y'all!"</p>
-  </div>
-  <p class="slide">Here, <code>click()</code> is a higher order function.</p>
+  <p class"slide">Functions that take a function as an argument or return a function are <strong>higher-order functions.</strong></p>
+  <p class="slide">Here <code>click()</code> is a higher-order function.</p>
   <p class="slide"><a href="http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/">Dive deep into callbacks at javascriptissexy.com</a></p>
 </section>
 
@@ -569,6 +600,7 @@ $("#button2").hover(function(){
   console.log(buttonText);
 });
 </pre>
+<p><a href="http://cdpn.io/6780ba4e924349240d9fcbaece66b7f3">Work on it live in CodePen!</a></p>
 </section>
 
 <section class="slide">
@@ -607,8 +639,8 @@ $("#button2").hover(logButton);
 </section>
 
 <section class="slide">
-  <h2>Revisiting the Global Object</h2>
-  <p class="slide">In the browser, our Global Object <code>window</code> always has a <code>document</code> node: the HTML document.</p>
+  <h2>The Global Object and <code>document</code></h2>
+  <p>In the browser, our Global Object <code>window</code> always has a <code>document</code> node: the HTML document.</p>
   <div class="slide">
     <p>Remember this from earlier?</p>
 <pre class="language-javascript">
@@ -643,20 +675,19 @@ $(window).load(function() {
 <section class="slide">
   <h2>Event Propogation</h2>
   <p>Events will &ldquo;bubble&rdquo; up through the DOM, triggering listeners on the way.</p>
-</section>
-
-<section class="slide">
-  <h2>Stopping Propogation</h2>
+<div class="slide">
+  <h3>Stopping Propogation</h3>
   <p>You can stop propogation by using <code>return false</code>.</p>
 <pre class="language-javascript">
 $("a").click(function(){
   // code for lightbox ...
 
-  return false; // stops rest of function from completing
+  return false; // stops event from completing
 });
 </pre>
-
-  <div class="slide">
+  <p><a href="http://css-tricks.com/return-false-and-prevent-default/">Dive deep with Chris Coyier.</a></p>
+</div>
+<!--   <div class="slide">
   <p>Which is a ham-fisted version of:</p>
 <pre class="language-javascript">
 function(e) {
@@ -664,9 +695,8 @@ function(e) {
   e.stopPropagation();
 }
 </pre>
-  <p><a href="http://css-tricks.com/return-false-and-prevent-default/">Dive deep with Chris Coyier.</a></p>
   </div>
-</section>
+ --></section>
 
 <section class="slide">
   <h2>Page Load and Event Listeners</h2>
@@ -686,6 +716,7 @@ var addLi = function() {
   $("ul").append("<li>New element!</li>");
 }
 </pre>
+    <p><a href="http://codepen.io/rachelnabors/pen/2063fb3608f069246474042c2e86977d">Work on it live in CodePen!</a></p>
     <p class="slide">They don't work because no listeners were attached to them.</p>
   </div>
 </section>
@@ -708,6 +739,7 @@ $("ul").on("click", "li", clickOnLi); //listens for clicks on uls only
 <section class="slide">
   <h2>Your new Best Friends</h2>
   <p>JavaScript boils down to objects, functions, and events.</p>
+  <p>ILLO</p>
 </section>
 
 <section class="slide">
