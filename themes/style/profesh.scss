@@ -255,3 +255,18 @@ $grey: #858585;
 	background-size: 20% auto;
 	padding-right: 30% !important;
 }
+
+.logos {
+	text-align: center;
+	a:link, a:visited, a:hover, a:active{
+		border: 0;
+		height: 0;
+		padding: 0;
+		line-height: 0;
+		display: inline-block;
+	}
+	img {
+		margin: 1em;
+		height: 48px;
+	}
+}

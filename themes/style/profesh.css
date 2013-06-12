@@ -178,3 +178,15 @@
   background: url(../../img/p_event-listener.png) 90% 3em no-repeat;
   background-size: 20% auto;
   padding-right: 30% !important; }
+
+.logos {
+  text-align: center; }
+  .logos a:link, .logos a:visited, .logos a:hover, .logos a:active {
+    border: 0;
+    height: 0;
+    padding: 0;
+    line-height: 0;
+    display: inline-block; }
+  .logos img {
+    margin: 1em;
+    height: 48px; }
