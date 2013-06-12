@@ -507,15 +507,22 @@ $("#rebel").click(function() { //anonymous function
  -->
 <section class="slide">
   <h2>Callbacks</h2>
-    <p>A callback is when you pass a function to another function to be executed when it's finished.</p>
+    <p>A callback is when you pass a function to another function to be executed at a later time.</p>
   <pre class="language-javascript">
-$("#goodbye").click(function() { 
+$("#goodbye").click(function(){ //execute after click event
   alert("Holla back, y'all!");
 });
 </pre>
-  <p class"slide">Functions that take a function as an argument or return a function are <strong>higher-order functions.</strong></p>
-  <p class="slide">Here <code>click()</code> is a higher-order function.</p>
-  <p class="slide"><a href="http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/">Dive deep into callbacks at javascriptissexy.com</a></p>
+<div class="slide">
+  <pre class="language-javascript">
+setTimeout(function(){ //execute after 3 seconds
+  alert("Ready for lift off.");
+},3000);
+</pre>
+</div>
+<div class="slide">
+  <p>Functions that take a function as an argument or return a function are <strong>higher-order functions.</strong></p>
+</div>
 </section>
 
 <section class="slide">
@@ -558,20 +565,30 @@ animalpedia = function() {
   <h2><code>this</code></h2>
   <p>When you make a function, a <code>this</code> is born.</p>
   <div class="slide">
-    <p><code>this</code> is like a variable that refers to the object containing the function.</p>
-      <pre class="language-javascript">
+    <p><code>this</code> is like a variable that refers to the context in which the method was called.</p>
+    <pre class="language-javascript">
 var ourObject = {
-  func1: function() {
-    console.log(this); // logs ourObject
+  func: function() {
+    console.log(this); // refers to the context
   }  
 }
 
-ourObject.func1();
+ourObject.func(); // in ourObject context
+    </pre>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><code>this</code> and the Global Object</h2>
+  <p>By default, <code>this</code> refers to the Global Object (because it's the big catch-all).</p> 
+  <pre class="language-javascript">
+console.log(this);
 </pre>
   <div class="slide">
-    <p>By default, <code>this</code> refers to the Global Object (because it's the big catch-all).</p> 
-    <pre class="language-javascript">
-console.log(this);
+    <p>This can lead to some misunderstandings!</p>
+<pre class="language-javascript">
+var newFunc = ourObject.func; 
+newFunc(); // in the Global Object context!
 </pre>
   </div>
 </section>
@@ -665,53 +682,45 @@ document.querySelectorAll('p'); // Regular ol' JS gets p
   <div class="slide">
     <p>Look familiar?</p>
 <pre class="language-javascript">
-$(window).load(function() {
+$(document).ready(function () { 
   // Do stuff in here.
 });
 </pre>
-    <p><code>.load()</code> is a jQuery method whose callback runs when all assets have been rendered.</p>
+    <p><code>.ready()</code> is a jQuery method whose callback runs when the DOM has been rendered.</p>
   </div>
 </section>
 
 <section class="slide">
-  <h2>Event Propogation</h2>
+  <h2>Event Propagation</h2>
   <p>Events will &ldquo;bubble&rdquo; up through the DOM, triggering listeners on the way.</p>
 <div class="slide">
-  <h3>Stopping Propogation</h3>
-  <p>You can stop propogation by using <code>return false</code>.</p>
+  <h3>Stopping Propagation</h3>
+  <p>You can stop propagation using <a href="http://api.jquery.com/event.preventDefault/">one of jQuery's handy event methods</a>.</p>
 <pre class="language-javascript">
-$("a").click(function(){
+$("a").click(function(event){
   // code for lightbox ...
 
-  return false; // stops event from completing
+  event.preventDefault();
 });
 </pre>
-  <p><a href="http://css-tricks.com/return-false-and-prevent-default/">Dive deep with Chris Coyier.</a></p>
 </div>
-<!--   <div class="slide">
-  <p>Which is a ham-fisted version of:</p>
-<pre class="language-javascript">
-function(e) {
-  e.preventDefault();
-  e.stopPropagation();
-}
-</pre>
-  </div>
- --></section>
+</section>
 
 <section class="slide">
-  <h2>Page Load and Event Listeners</h2>
-  <p>Event listeners are attached when the page is rendered.</p>
+  <h2>Page Rendering and Event Listeners</h2>
+  <p>Events should be attached after the DOM is rendered.</p>
 <pre class="language-javascript">
-var clickOnLi = function() {
-  console.log("Clicking on list items!");
-}
+$(document).ready(function () { // when DOM is rendered...
+  var clickOnLi = function() {
+    console.log("Clicking on list items!");
+  }
 
-$("li").click(clickOnLi);
+  $("li").click(clickOnLi); // attach click handler
+});
 </pre>
   
   <div class="slide">
-    <p>But what happens when you add an element after page load?</p>
+    <p>But what happens when you add an element after page render?</p>
 <pre class="language-javascript">
 var addLi = function() {
   $("ul").append("<li>New element!</li>");
