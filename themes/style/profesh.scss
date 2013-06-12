@@ -224,3 +224,19 @@ $grey: #858585;
 		}
 	}
 }
+
+/* Deck Specific */
+.table-illo {
+	background: lighten(#a69feb, 20%);
+	color: darken(#a69feb, 50%);
+	display: block;
+	margin-bottom: 1.5em;
+	td, th {
+		border: solid 2px darken(#a69feb, 10%);
+		padding: .25em 1em;
+	}
+	caption {
+		background: #a69feb;
+		padding: .5em;
+	}
+}

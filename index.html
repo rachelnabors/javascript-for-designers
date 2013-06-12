@@ -59,13 +59,7 @@
 
 <section class="slide">
   <h2>I am <strong>not</strong> a hardcore JavaScript developer.</h2>
-  <p>ILLO: I think most of this page could be a comic, like Rachel at a conference wondering wtf everyone's talking about.</p>
-  <!--it should read like I <3 CSS, thought I could learn JS by osmosis, but sucked at it for years.-->
-  <!--TODO Comic: "I'm just not good at JavaScript! I'll just stick to CSS."-->
-  <p>CSS is my True Love.</p>
-  <p class="slide">I struggled with JS for years. Thought I couldn't learn it.</p>
-  <p class="slide">It felt like all the resources were by programmers for programmers. There was nothing written for me and my CSS heart.</p>
-  <p class="slide">But some exciting CSS projects and good books helped me get a grip on JS.</p>
+  <img src="img/p_me-javascript.png" alt="I pout while a man holding a copy of JavaScript the Good Parts tells me I wouldn't understand, it's not for me.">
 </section>
 
 <section class="slide">
@@ -166,7 +160,36 @@ document.querySelectorAll('p'); // Regular ol' JS gets p
 
 <section class="slide">
   <h2>What does an Object look like?</h2>
-  <p>TODO ILLO of an object</p>
+  <table class="table-illo">
+    <caption>unicorn</caption>
+    <thead>
+      <tr>
+        <th scope="col" id="object-illo-prop">property:</th>
+        <th scope="col" id="object-illo-val">property value:</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td headers="object-illo-prop">name</td>
+        <td headers="object-illo-val">Twilight Sparkle</td>
+      </tr>
+      <tr>
+        <td headers="object-illo-prop">color</td>
+        <td headers="object-illo-val">purple</td>
+      </tr>
+      <tr>
+        <td headers="object-illo-prop">wings</td>
+        <td headers="object-illo-val">true</td>
+      </tr>
+      <tr>
+        <td headers="object-illo-prop">getName</td>
+        <td headers="object-illo-val">
+function() { <br />
+&nbsp;&nbsp;return "Hi, I'm " + unicorn.name;<br/>
+}</td>
+      </tr>
+    </tbody>
+  </table>
   <p class="slide">Objects are just collections of things, things called <strong>properties</strong>.</code>
 </section>
 
@@ -364,7 +387,7 @@ $("button").click(function(){
     <li class="slide"><strong>Returned</strong> from an operation</li>
     <li class="slide"><strong>Assigned</strong> to a variable</li>
   </ul>
-  <p>TODO ILLO, cookies: making, giving, receiving, and assigning "Mimi"</p>
+  <p>ILLO, cookies: making, giving, receiving, and assigning "Mimi"</p>
 </section>
 
 <section class="slide">
@@ -408,7 +431,6 @@ var addExpression = function(x, y) {
 <section class="slide">
   <h2>Invoking a Function</h2>
   <p>To run a function, it needs parentheses.</p>
-  <p>TODO ILLO: This is why these are here.</p>
   <pre class="language-javascript">$("#thief").hide();</pre>
   <p class="slide">Anything you put inside those parentheses are <strong>arguments</strong> the function can use.</p>
 </section>
@@ -432,10 +454,11 @@ var henrietta = redHen(); // create an object via a function
 
 <section class="slide">
   <h2>Anonymous Functions</h2>
-  <p>Anonymous functions are like disposable functions, use as needed. ILLO anon function</p>
+  <img src="img/p_anonymous-function.png" alt="A function wearing an adorable Guy Fawkes mask." />
+  <p>Anonymous functions are like disposable functions, use as needed.</p>
   <pre class="language-javascript">
-$("#attack").click(function() { //anonymous function 
-  console.log("You attack the dragon with your trusty sword.");
+$("#rebel").click(function() { //anonymous function 
+  console.log("The new world order has begun.");
 });
 </pre>
 </section>
@@ -449,7 +472,6 @@ $("#attack").click(function() { //anonymous function
 
 <section class="slide">
   <h2>Callbacks</h2>
-  <!--ILLO Hollaback, y'all!-->
   <p>Callbacks are used by higher-order functions.</p>
   <div class="slide">
     <p>A callback is when you pass a function to another function to be executed when it's finished.</p>

@@ -151,3 +151,16 @@
     background: #eee; }
   .deck-container.deck-menu .deck-current, .no-touch .deck-container.deck-menu .slide:hover {
     background: #ddf; }
+
+/* Deck Specific */
+.table-illo {
+  background: #f4f3fd;
+  color: #201873;
+  display: block;
+  margin-bottom: 1.5em; }
+  .table-illo td, .table-illo th {
+    border: solid 2px #7f75e2;
+    padding: 0.25em 1em; }
+  .table-illo caption {
+    background: #a69feb;
+    padding: .5em; }
