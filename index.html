@@ -536,7 +536,7 @@ var Unicorn = function(name, color, wings) {
 
 var twilightSparkle = new Unicorn('Twilight Sparkle', 'purple', 'true');
 
-var twilightSparkle.constructor //unicorn
+twilightSparkle.constructor
 </pre>
 </section>
 
@@ -659,7 +659,7 @@ document.querySelectorAll('p'); // Regular ol' JS gets p
 
 <section class="slide">
   <h2>Events</h2>
-  <p><strong>Events</strong> can be caused by users or JavaScript itself.</p>
+  <p><strong>Events</strong> can be triggered by users, the browser, or JavaScript itself.</p>
   <p class="slide"><strong>Event Listeners</strong> are functions that execute in response to an event.</p>
   <p class="slide">On the human end of that equation, see <a href="http://api.jquery.com/category/events/mouse-events/">Mouse event handlers</a>.</p>
   <div class="slide">
@@ -669,7 +669,7 @@ $(window).load(function() {
   // Do stuff in here.
 });
 </pre>
-    <p><code>.load()</code> is a jQuery method called when all assets have been rendered.</p>
+    <p><code>.load()</code> is a jQuery method whose callback runs when all assets have been rendered.</p>
   </div>
 </section>
 
