@@ -20,7 +20,7 @@ $franklin: franklin-gothic-urw, sans-serif;
 $ostblk: 'OstrichSansBlack', sans-serif;
 $ostmed: 'OstrichSansMedium', sans-serif;
 
-$black: #3f4752;
+$black: #000; //#3f4752
 $highlight: #d6e549; //green
 $highlightContrast: #313b02; //dark green
 $link: #1CCEFF; //turquoise
@@ -28,8 +28,8 @@ $linkVisited: #0097C0; // dark turq
 $callout: #e64988; // pink
 $magenta: #a52469;
 
-$canvas: #dfeff6;
-$canvas_black: #141f31;
+$canvas: #fff;//#dfeff6
+$canvas_black: #000;//#141f31
 $grey: #858585;
 
 %ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
@@ -119,6 +119,8 @@ $grey: #858585;
 			margin-top: 2em;
 		}
 		pre {
+			background: $canvas;
+			color: $canvas_black;
 			border-color:$grey;
 			em { color: $callout;}
 		}

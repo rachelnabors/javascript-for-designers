@@ -85,6 +85,8 @@
     .deck-container .slide h4 {
       margin-top: 2em; }
     .deck-container .slide pre {
+      background: white;
+      color: black;
       border-color: #858585; }
       .deck-container .slide pre em {
         color: #e64988; }
