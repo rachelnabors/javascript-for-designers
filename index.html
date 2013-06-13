@@ -279,7 +279,7 @@ castles === pegasi; // compares two Objects(), not their numeric values
     <p>Primitives are not objects. They're values.</p>
 <pre class="language-javascript">
 var castles = 2;
-var horses = 2;
+var pegasi = 2;
 
 castles === pegasi; // compares two numeric values
 </pre>
@@ -349,7 +349,7 @@ $("mark").css({
   "font-size": "2em"
 });
 
-$("button").click(function(){
+$("input").click(function(){
   $(this).css({
     "color": "#a52469",
     "font-weight": "bold",
@@ -357,7 +357,7 @@ $("button").click(function(){
   });
 });
 </pre>
-<p><a href="http://cdpn.io/a83cbe2d5aa5e5f390aa03f01f7c1ada">Work on it live in CodePen!</a></p>
+<p><a href="http://codepen.io/rachelnabors/pen/a83cbe2d5aa5e5f390aa03f01f7c1ada" target="_blank">Work on it live in CodePen!</a></p>
 </section>
 
 <section class="slide">
@@ -624,7 +624,7 @@ $("#button2").hover(function(){
   console.log(buttonText);
 });
 </pre>
-<p><a href="http://cdpn.io/6780ba4e924349240d9fcbaece66b7f3">Work on it live in CodePen!</a></p>
+<p><a href="http://codepen.io/rachelnabors/pen/6780ba4e924349240d9fcbaece66b7f3" target="_blank">Work on it live in CodePen!</a></p>
 </section>
 
 <section class="slide">
@@ -666,14 +666,13 @@ $("#button2").hover(logButton);
   <h2>The Global Object and <code>document</code></h2>
   <p>In the browser, our Global Object <code>window</code> always has a <code>document</code> node: the HTML document.</p>
   <div class="slide">
-    <p>Remember this from earlier?</p>
+    <p>Remember <code>document</code> from earlier?</p>
 <pre class="language-javascript">
 $('p'); // jQuery gets p
 
 document.querySelectorAll('p'); // Regular ol' JS gets p
 </pre>
   </div>
-  <p class="slide">So <code>document.querySelectorAll('p')</code> is the same as <code>window.document.querySelectorAll('p')</code></p>
 </section>
 
 <section class="slide">
@@ -737,7 +736,7 @@ var addLi = function() {
   $("ul").append("<li>New element!</li>");
 }
 </pre>
-    <p><a href="http://codepen.io/rachelnabors/pen/2063fb3608f069246474042c2e86977d">Work on it live in CodePen!</a></p>
+    <p><a href="http://codepen.io/rachelnabors/pen/2063fb3608f069246474042c2e86977d" target="_blank">Work on it live in CodePen!</a></p>
     <p class="slide">They don't work because no listeners were attached to them.</p>
   </div>
 </section>
@@ -759,7 +758,7 @@ $("ul").on("click", "li", clickOnLi); //listens for clicks on uls only
 
 <section class="slide">
   <h2>Your new Best Friends</h2>
-  <p>JavaScript boils down to events, objects, and and functions.</p>
+  <p>JavaScript boils down to events, objects, and functions.</p>
   <img src="img/p_bffs.png" alt="Objects, Functions, and Event Listeners being best buddies." />
 </section>
 
