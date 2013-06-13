@@ -786,6 +786,67 @@ $("ul").on("click", "li", clickOnLi); //listens for clicks on uls only
 
 </section>
 
+<section class="slide">
+  <h1 class="vcenter">Super Secret Bonus Round!!</h1>
+</section>
+
+<section class="slide">
+  <h2>Closures</h2>
+  <p>When variables are declared within a function, only the function and any functions it contains can access them.</p> 
+  <p class="slide">Closures happen when you nest a function inside a function&hellip;</p> 
+  <p class="slide">&hellip;and then use the variables of the containing function!</p> 
+</section>
+
+<section class="slide">
+  <h2>A Closure in Action</h2>
+  <pre class="language-javascript">
+function princess() {
+  var dragons = ["Great Blue", "Glitterfang", "Fafnir"]; // there are 3 dragons to slay
+
+  return {
+    slayDragon: function() {
+      return dragons.pop(); //pop gets and removes the last array item
+    }
+  };
+}
+
+var littleGirl = princess(); //littleGirl is now secretly a princess
+
+// Now she can slay dragons no one can see.
+littleGirl.slayDragon(); 
+littleGirl.slayDragon(); 
+littleGirl.slayDragon(); 
+</pre>
+  <p class="slide">Inspired by <a href="http://stackoverflow.com/questions/111102/how-do-javascript-closures-work/6472397#6472397">my favorite explanation of closures ever</a>.</p>
+  <p class="slide"><a href="http://javascriptissexy.com/understand-javascript-closures-with-ease/">Deep dive on closures at javascriptissexy.com</a></p>
+</section>
+
+<section class="slide">
+  <h2>Hosting</h2>
+  <p>You can use a <strong>function statement</strong> in a script before you define it, like so:</p>
+  <pre class="language-javascript">
+var crow = function() {
+    caw(); // caw() hasn't been defined yet, but you can still invoke it.
+    function caw() {console.log('Caw caw caw!');}
+}(); // invoke, remember the parentheses?
+</pre>
+  <p><a href="http://johnkpaul.com/blog/2013/02/11/what-is-hoisting-really/">More reading on hoisting.</a></p>
+</section>
+
+<section class="slide">
+  <h2>Recursion</h2>
+  <p>Recursion is when a function calls itself. See this example from Cody Lindley:</p>
+  <pre class="language-javascript">
+var countDownFrom = function countDownFrom(num) {
+  console.log(num);
+  num--;//reduce num by 1
+  if (num < 0){return false;} // if num < 0 return function with no recursion
+  countDownFrom(num);
+};
+countDownFrom(5); // kick off the function, which logs separately 5,4,3,2,1,0
+</pre>
+</section>
+
 <!-- Begin extension snippets. Add or remove as needed. -->
 
 <!-- deck.navigation snippet -->
