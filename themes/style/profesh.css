@@ -182,11 +182,12 @@
 .logos {
   text-align: center; }
   .logos a:link, .logos a:visited, .logos a:hover, .logos a:active {
+    background: none !important;
     border: 0;
     height: 0;
     padding: 0;
-    line-height: 0;
-    display: inline-block; }
+    line-height: 0; }
   .logos img {
-    margin: 1em;
+    display: inline-block;
+    margin: .25em;
     height: 48px; }

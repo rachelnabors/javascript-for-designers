@@ -66,11 +66,11 @@
 <section class="slide">
   <h2>You are&hellip;</h2>
   <ul>
-    <li class="slide">Familiar with jQuery and/or JavaScript--but aren't sure how things happen under the hood.</li>
+    <div class="slide" style="width:30%; float: left">Familiar with jQuery.</div>
     <!-- ILLO: It just works. Aaand now it doesn't... Crap. What did I do? -->
-    <li class="slide">Suffering from imposter syndrome</li>
+    <div class="slide" style="width:30%; float: left">Suffering from imposter syndrome</div>
     <!-- ILLO: I don't belong here. They're going to find me out. -->
-    <li class="slide">Confused or annoyed when JS devs talk over your head</li>
+    <div class="slide" style="width:30%; float: left">Confused or annoyed when JS devs talk over your head</div>
     <!-- ILLO: JS devs, "blah blah methods blah blah prototypal inheritance" -.- -->
   </ul>
 </section>
@@ -87,8 +87,7 @@
 </section>
 
 <section class="slide">
-    <h2>Plus&hellip;</h2>
-    <p>ILLO Designers who get JavaScript are called UNICORNS.</p>
+  <img src="img/p_unicorn.png" alt="UNICORNS DO ALL THE THINGS" />
 </section>
 
 <section class="slide">
@@ -616,12 +615,12 @@ newFunc(); // in the Global Object context!
   <pre class="language-javascript">
 $("#button1").click(function(){
   var buttonText = $("#button1").val();
-  console.log(buttonText);
+  alert(buttonText);
 });
 
 $("#button2").hover(function(){
   var buttonText = $("#button2").val();
-  console.log(buttonText);
+  alert(buttonText);
 });
 </pre>
 <p><a href="http://codepen.io/rachelnabors/pen/6780ba4e924349240d9fcbaece66b7f3" target="_blank">Work on it live in CodePen!</a></p>
@@ -633,7 +632,7 @@ $("#button2").hover(function(){
   <pre class="language-javascript">
 var logButton = function(){
   var buttonText = $(this).val();
-  console.log(buttonText);
+  alert(buttonText);
 }
 
 $("#button1").click(logButton);
@@ -722,23 +721,23 @@ $("a").click(function(event){
 <pre class="language-javascript">
 $(document).ready(function () { // when DOM is rendered...
   var clickOnLi = function() {
-    console.log("Clicking on list items!");
+    alert("Clicking on list items!");
   }
 
   $("li").click(clickOnLi); // attach click handler
 });
 </pre>
-  
-  <div class="slide">
-    <p>But what happens when you add an element after page render?</p>
+</section>
+
+<section class="slide">
+  <h2>Events and Post-Rendering DOM manipulation</h2>  
+  <p>If you add an element to the DOM after page render, it <strong>won't</strong> get it's listener attached!</p>
 <pre class="language-javascript">
 var addLi = function() {
   $("ul").append("<li>New element!</li>");
 }
 </pre>
-    <p><a href="http://codepen.io/rachelnabors/pen/2063fb3608f069246474042c2e86977d" target="_blank">Work on it live in CodePen!</a></p>
-    <p class="slide">They don't work because no listeners were attached to them.</p>
-  </div>
+  <p><a href="http://codepen.io/rachelnabors/pen/2063fb3608f069246474042c2e86977d" target="_blank">Work on it live in CodePen!</a></p>
 </section>
 
 <section class="slide">
