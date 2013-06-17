@@ -790,6 +790,23 @@ $("ul").on("click", "li", clickOnLi); //listens for clicks on uls only
 </section>
 
 <section class="slide">
+  <h2>Getters and Setters</h2>
+  <p>In jQuery, some methods do double duty: they both set values and return values.</p> 
+  <div class="slide">
+    <h3>Getting</h3>
+    <pre class="language-javascript">
+      $("p").height(); // returns the height, ie "20px"
+    </pre>
+  </div> 
+  <div class="slide">
+    <h3>Setting</h3>
+    <pre class="language-javascript">
+      $("p").height("200px"); // sets the element's height to "200px"
+    </pre>
+  </div>   
+</section>
+
+<section class="slide">
   <h2>Closures</h2>
   <p>When variables are declared within a function, only the function and any functions it contains can access them.</p> 
   <p class="slide">Closures happen when you nest a function inside a function&hellip;</p> 
