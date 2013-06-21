@@ -791,23 +791,25 @@ $("ul").on("click", "li", clickOnLi); //listens for clicks on uls only
 
 <section class="slide">
   <h2>Getters and Setters</h2>
-  <p>In JavaScript, some methods do double duty: they both set values and return values.</p> 
+  <p>In jQuery, some methods do double duty: they both set values and return values.</p> 
+  <p>Compare how you would do this in Vanilla JS with jQuery's methods.</p>
   <div class="slide">
     <h3>Getting</h3>
 <pre class="language-javascript">
 //return the contents of a paragraph
-document.querySelector('h1').innerHTML; // Vanilla JS
-$("h1").html(); // jQuery
+document.querySelector('h1').innerHTML; // Vanilla JS getting a property
+$("h1").html(); // jQuery method returning a property
 </pre>
   </div> 
   <div class="slide">
     <h3>Setting</h3>
 <pre class="language-javascript">
 // set or overwrite the contents of a paragraph
-document.querySelector('h1').innerHTML = "New text!"; // Vanilla JS
-$("h1").html("New text!"); // jQuery
+document.querySelector('h1').innerHTML = "New text!"; // Vanilla JS setting a property
+$("h1").html("New text!"); // jQuery method setting a property
 </pre>
-  </div>   
+<p><a href="http://ejohn.org/blog/javascript-getters-and-setters/">Dive deep on getters and setters!</a></p>
+  </div> 
 </section>
 
 <section class="slide">
